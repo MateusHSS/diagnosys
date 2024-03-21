@@ -1,32 +1,26 @@
-import {
-  CreationOptional,
-  DataTypes,
-  InferAttributes,
-  InferCreationAttributes,
-  Model,
-} from "sequelize";
+import {DataTypes, Model} from "sequelize";
 import sequelize from "@config/db";
 
-export interface PessoaInput {
-  nome: String;
-  email: String;
-  cpf: String;
-  rg?: String;
-  telefone?: String;
+export interface PessoaAtributos {
+  id?: number;
+  nome: string;
+  email: string;
+  cpf: string;
+  rg?: string;
+  telefone?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
-class Pessoa extends Model<
-  InferAttributes<Pessoa>,
-  InferCreationAttributes<Pessoa>
-> {
-  declare id: CreationOptional<Number>;
-  declare nome: String;
-  declare email: String;
-  declare cpf: String;
-  declare rg: CreationOptional<String>;
-  declare telefone: CreationOptional<String>;
-  declare createdAt: CreationOptional<Date>;
-  declare updatedAt: CreationOptional<Date>;
+class Pessoa extends Model<PessoaAtributos> implements PessoaAtributos {
+  public id!: number;
+  public nome!: string;
+  public email!: string;
+  public cpf!: string;
+  public rg?: string;
+  public telefone?: string;
+  public readonly createdAt?: Date;
+  public readonly updatedAt?: Date;
 }
 
 Pessoa.init(
@@ -70,7 +64,7 @@ Pessoa.init(
           ? rawValue.replace(/^(\d{2})(\d{3})(\d{3})$/, "$1-$2.$3")
           : null;
       },
-      set(val: String) {
+      set(val: string) {
         this.setDataValue("rg", val.replace(/\D/g, ""));
       },
     },
@@ -78,19 +72,13 @@ Pessoa.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    createdAt: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-      allowNull: true,
-    },
   },
   {
     sequelize,
+    modelName: "Pessoa",
     tableName: "pessoa",
+    freezeTableName: true,
+    timestamps: true,
   }
 );
 

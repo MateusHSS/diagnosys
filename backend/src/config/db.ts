@@ -8,6 +8,7 @@ const config: Options = {
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   dialect: "mysql",
+  logging: true,
 };
 
 export default new Sequelize(config);

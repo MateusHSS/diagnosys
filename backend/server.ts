@@ -1,6 +1,5 @@
 import express, {Express} from "express";
 import dotenv from "dotenv";
-import testeController from "@controllers/testeController";
 import pessoaController from "@controllers/pessoaController";
 import db from "@config/db";
 import bodyParser from "body-parser";
@@ -13,7 +12,6 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.use(testeController);
 app.use(pessoaController);
 
 app.listen(port, () => {

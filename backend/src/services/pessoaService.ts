@@ -1,4 +1,3 @@
-import Pessoa from "@models/pessoaModel";
 import {inserir, listar} from "dao/pessoaDAO";
 import {NextFunction, Request, Response} from "express";
 
