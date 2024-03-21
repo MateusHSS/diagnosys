@@ -37,3 +37,14 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
 
 ## Sprint Planning I
 
+### Backlog do Produto
+
+- Como usuário, eu gostaria de cadastrar um novo paciente ao sistema.
+- Como usuário, eu gostaria de armazenar o histórico médico completo de cada paciente, incluindo consultas, exames e medicamentos utilizados.
+- Como usuário, eu gostaria de consultar os meus registros cadastrados (consultas, exames, medicamentos).
+- Como usuário, eu gostaria de agendar consultas e exames médicos.
+- Como médico, eu gostaria de cadastrar consultas para os pacientes.
+- Como médico, eu gostaria de cadastrar pedidos de exame para os pacientes.
+- Como médico, eu gostaria de visualizar e gerenciar as receitas e pedidos de exames cadastrados para cada paciente.
+- Como médico, eu gostaria de associar receitas e pedidos de exames às consultas correspondentes.
+- Como médico, eu gostaria de acessar os dados do paciente.
