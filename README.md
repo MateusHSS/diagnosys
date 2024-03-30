@@ -45,18 +45,17 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
  4. Como usuário, eu gostaria de pesquisar um médico.
  5. Como usuário, eu gostaria de armazenar o histórico médico completo de cada paciente, incluindo consultas, exames e medicamentos utilizados.
  6. Como usuário, eu gostaria de consultar os meus registros cadastrados (consultas, exames, medicamentos).
- 7. Como usuário, eu gostaria de agendar consultas e exames médicos.
- 8. Como usuário, eu gostaria de ver o status da minha receita médica.
- 9. Como usuário, eu gostaria de ver informações sobre a minha consulta.
- 10. Como médico, eu gostaria de me cadastrar no sistema.
- 11. Como médico, eu gostaria de gerenciar meu cadastro no sistema.
- 12. Como médico, eu gostaria de cadastrar consultas para os meus pacientes.
- 13. Como médico, eu gostaria de cadastrar pedidos de exame para os meus pacientes.
- 14. Como médico, eu gostaria de visualizar e gerenciar as receitas e pedidos de exames cadastrados para os meus pacientes.
- 15. Como médico, eu gostaria de associar receitas e pedidos de exames às consultas correspondentes.
- 16. Como médico, eu gostaria de acessar os dados do paciente.
- 17. Como administrador, eu gostaria de excluir um usuário.
- 18. Como administrador, eu gostaria de excluir um médico.
+ 7. Como usuário, eu gostaria de ver o status da minha receita médica.
+ 8. Como usuário, eu gostaria de ver informações sobre a minha consulta.
+ 9. Como médico, eu gostaria de me cadastrar no sistema.
+ 10. Como médico, eu gostaria de gerenciar meu cadastro no sistema.
+ 11. Como médico, eu gostaria de cadastrar consultas para os meus pacientes.
+ 12. Como médico, eu gostaria de cadastrar pedidos de exame para os meus pacientes.
+ 13. Como médico, eu gostaria de visualizar e gerenciar as receitas e pedidos de exames cadastrados para os meus pacientes.
+ 14. Como médico, eu gostaria de associar receitas e pedidos de exames às consultas correspondentes.
+ 15. Como médico, eu gostaria de acessar os dados do paciente.
+ 16. Como administrador, eu gostaria de excluir um usuário.
+ 17. Como administrador, eu gostaria de excluir um médico.
 
 ### Backlog da Sprint
 
