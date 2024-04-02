@@ -77,9 +77,9 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
     
     1. Criar tela de cadastro no figma
     2. Criar tela de cadastro no frontend
-    3. Implementar funcionalidade de criar usuário no backend
-    4. Implementar funcionalidade de deletar usuário no backend
-    5. Implementar funcionalidade de ler usuário no backend
+    3. Implementar funcionalidade de criar usuário no backend [Filipe]
+    4. Implementar funcionalidade de deletar usuário no backend [Filipe]
+    5. Implementar funcionalidade de ler usuário no backend [Filipe]
 
 - História #3: Como usuário, eu gostaria de pesquisar um médico.
     
@@ -95,7 +95,7 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
     1. Criar tela de registros no figma
     2. Criar tela de registros no frontend
     3. Implementar funcionalidade de ver os registros cadastrados na tela de registros no frontend 
-    4. Implementar funcionalidade de listar os registros cadastrados no backend
+    4. Implementar funcionalidade de listar os registros cadastrados no backend [Filipe]
       
 - História #5: Como médico, eu gostaria de cadastrar consultas para os meus pacientes.
     
@@ -112,8 +112,8 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
     **Tarefas e responsáveis**:
     
     1. Implementar funcionalidade de ver os registros cadastrados na tela de registros do usuário no frontend 
-    2. Implementar funcionalidade de listar os registros cadastrados do usuário no backend
-    3. Implementar funcionalidade de deletar um registro no backend
+    2. Implementar funcionalidade de listar os registros cadastrados do usuário no backend [Filipe]
+    3. Implementar funcionalidade de deletar um registro no backend [Filipe]
  
 - História #7: Como médico, eu gostaria de acessar os dados do paciente.
     
@@ -122,7 +122,7 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
     1. Criar tela de pacientes no figma
     2. Criar tela de pacientes no frontend
     3. Implementar funcionalidade de ver os pacientes do médico no frontend 
-    4. Implementar funcionalidade de listar os pacientes do médico no backend
+    4. Implementar funcionalidade de listar os pacientes do médico no backend [Filipe]
  
 - História #8: Como administrador, eu gostaria de excluir um usuário.
     
