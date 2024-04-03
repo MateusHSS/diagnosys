@@ -63,11 +63,11 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
     
     **Tarefas e responsáveis**:
     
-    1. Criar setup
-    2. Criar entidades principais do projeto
-    3. Configurar banco de dados MySQL
+    1. Criar setup [Mateus]
+    2. Criar entidades principais do projeto [Mateus]
+    3. Configurar banco de dados MySQL [Mateus]
     4. Criar design de tela inicial no figma
-    5. Criar tela inicial no frontend
+    5. Criar tela inicial no frontend [Mateus]
     6. Implementar funcionalidade de ver os médicos disponíveis na tela inicial no frontend 
     7. Implementar funcionalidade de listar médicos no backend [Iago]
        
@@ -111,7 +111,7 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
     
     **Tarefas e responsáveis**:
     
-    1. Implementar funcionalidade de ver os registros cadastrados na tela de registros do usuário no frontend 
+    1. Implementar funcionalidade de ver os registros cadastrados na tela de registros do usuário no frontend [Mateus]
     2. Implementar funcionalidade de listar os registros cadastrados do usuário no backend [Filipe]
     3. Implementar funcionalidade de deletar um registro no backend [Filipe]
  
@@ -120,7 +120,7 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
     **Tarefas e responsáveis**:
 
     1. Criar tela de pacientes no figma
-    2. Criar tela de pacientes no frontend
+    2. Criar tela de pacientes no frontend [Mateus]
     3. Implementar funcionalidade de ver os pacientes do médico no frontend [Iago]
     4. Implementar funcionalidade de listar os pacientes do médico no backend [Filipe]
  
@@ -129,7 +129,7 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
     **Tarefas e responsáveis**:
 
     1. Criar tela de usuários no figma
-    2. Criar tela de usuários no frontend
+    2. Criar tela de usuários no frontend [Mateus]
     3. Implementar funcionalidade de ver todos os usuários no frontend [Iago]
     4. Implementar funcionalidade de listar os usuários no backend [Iago]
     5. Implementar funcionalidade de deletar um usuário no backend [Iago]
