@@ -56,6 +56,10 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
  15. Como médico, eu gostaria de acessar os dados do paciente.
  16. Como administrador, eu gostaria de excluir um usuário.
  17. Como administrador, eu gostaria de excluir um médico.
+ 18. Como administrador, eu gostaria de gerenciar um usuário.
+ 19. Como administrador, eu gostaria de gerenciar um médico.
+ 20. Como administrador, eu gostaria de visualizar um usuário.
+ 21. Como administrador, eu gostaria de visualizar um médico.
 
 ### Backlog da Sprint
 
@@ -66,17 +70,17 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
     1. Criar setup [Mateus]
     2. Criar entidades principais do projeto [Mateus]
     3. Configurar banco de dados MySQL [Mateus]
-    4. Criar design de tela inicial no figma
+    4. Criar design de tela inicial no figma [Hideki]
     5. Criar tela inicial no frontend [Mateus]
-    6. Implementar funcionalidade de ver os médicos disponíveis na tela inicial no frontend 
+    6. Implementar funcionalidade de ver os médicos disponíveis na tela inicial no frontend [Hideki]
     7. Implementar funcionalidade de listar médicos no backend [Iago]
        
 - História #2: Como usuário, eu gostaria de me cadastrar e gerenciar meu cadastro no sistema.
     
     **Tarefas e responsáveis**:
     
-    1. Criar tela de cadastro no figma
-    2. Criar tela de cadastro no frontend
+    1. Criar tela de cadastro no figma [Hideki]
+    2. Criar tela de cadastro no frontend [Hideki]
     3. Implementar funcionalidade de criar usuário no backend [Filipe]
     4. Implementar funcionalidade de deletar usuário no backend [Filipe]
     5. Implementar funcionalidade de ler usuário no backend [Filipe]
@@ -92,8 +96,8 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
     
     **Tarefas e responsáveis**:
     
-    1. Criar tela de registros no figma
-    2. Criar tela de registros no frontend
+    1. Criar tela de registros no figma [Hideki]
+    2. Criar tela de registros no frontend [Hideki]
     3. Implementar funcionalidade de ver os registros cadastrados na tela de registros no frontend [Iago]
     4. Implementar funcionalidade de listar os registros cadastrados no backend [Filipe]
       
@@ -101,8 +105,8 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
     
     **Tarefas e responsáveis**:
     
-    1. Criar tela de cadastro de consulta no figma
-    2. Criar tela de cadastro de consulta no frontend
+    1. Criar tela de cadastro de consulta no figma [Hideki]
+    2. Criar tela de cadastro de consulta no frontend [Hideki]
     3. Implementar funcionalidade de cadastrar consulta no backend [Iago]
     4. Implementar funcionalidade de deletar consulta cadastrada no backend [Iago]
     5. Implementar funcionalidade de ver consulta cadastrada no backend [Iago]
@@ -119,7 +123,7 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
     
     **Tarefas e responsáveis**:
 
-    1. Criar tela de pacientes no figma
+    1. Criar tela de pacientes no figma [Hideki]
     2. Criar tela de pacientes no frontend [Mateus]
     3. Implementar funcionalidade de ver os pacientes do médico no frontend [Iago]
     4. Implementar funcionalidade de listar os pacientes do médico no backend [Filipe]
@@ -128,7 +132,7 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
     
     **Tarefas e responsáveis**:
 
-    1. Criar tela de usuários no figma
+    1. Criar tela de usuários no figma [Hideki]
     2. Criar tela de usuários no frontend [Mateus]
     3. Implementar funcionalidade de ver todos os usuários no frontend [Iago]
     4. Implementar funcionalidade de listar os usuários no backend [Iago]
