@@ -69,7 +69,7 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
     4. Criar design de tela inicial no figma
     5. Criar tela inicial no frontend
     6. Implementar funcionalidade de ver os médicos disponíveis na tela inicial no frontend 
-    7. Implementar funcionalidade de listar médicos no backend
+    7. Implementar funcionalidade de listar médicos no backend [Iago]
        
 - História #2: Como usuário, eu gostaria de me cadastrar e gerenciar meu cadastro no sistema.
     
@@ -85,8 +85,8 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
     
     **Tarefas e responsáveis**:
     
-    1. Implementar funcionalidade de pesquisar médicos no frontend 
-    2. Implementar funcionalidade de listar médicos coerentes com a pesquisa no backend
+    1. Implementar funcionalidade de pesquisar médicos no frontend [Iago]
+    2. Implementar funcionalidade de listar médicos coerentes com a pesquisa no backend [Iago]
 
 - História #4: Como usuário, eu gostaria de consultar os meus registros cadastrados (consultas, exames, medicamentos).
     
@@ -94,7 +94,7 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
     
     1. Criar tela de registros no figma
     2. Criar tela de registros no frontend
-    3. Implementar funcionalidade de ver os registros cadastrados na tela de registros no frontend 
+    3. Implementar funcionalidade de ver os registros cadastrados na tela de registros no frontend [Iago]
     4. Implementar funcionalidade de listar os registros cadastrados no backend [Filipe]
       
 - História #5: Como médico, eu gostaria de cadastrar consultas para os meus pacientes.
@@ -103,9 +103,9 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
     
     1. Criar tela de cadastro de consulta no figma
     2. Criar tela de cadastro de consulta no frontend
-    3. Implementar funcionalidade de cadastrar consulta no backend
-    4. Implementar funcionalidade de deletar consulta cadastrada no backend
-    5. Implementar funcionalidade de ver consulta cadastrada no backend
+    3. Implementar funcionalidade de cadastrar consulta no backend [Iago]
+    4. Implementar funcionalidade de deletar consulta cadastrada no backend [Iago]
+    5. Implementar funcionalidade de ver consulta cadastrada no backend [Iago]
 
 - História #6: Como médico, eu gostaria de visualizar e gerenciar as receitas e pedidos de exames cadastrados para os meus pacientes.
     
@@ -121,7 +121,7 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
 
     1. Criar tela de pacientes no figma
     2. Criar tela de pacientes no frontend
-    3. Implementar funcionalidade de ver os pacientes do médico no frontend 
+    3. Implementar funcionalidade de ver os pacientes do médico no frontend [Iago]
     4. Implementar funcionalidade de listar os pacientes do médico no backend [Filipe]
  
 - História #8: Como administrador, eu gostaria de excluir um usuário.
@@ -130,7 +130,7 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
 
     1. Criar tela de usuários no figma
     2. Criar tela de usuários no frontend
-    3. Implementar funcionalidade de ver todos os usuários no frontend 
-    4. Implementar funcionalidade de listar os usuários no backend
-    5. Implementar funcionalidade de deletar um usuário no backend
+    3. Implementar funcionalidade de ver todos os usuários no frontend [Iago]
+    4. Implementar funcionalidade de listar os usuários no backend [Iago]
+    5. Implementar funcionalidade de deletar um usuário no backend [Iago]
     
