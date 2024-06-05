@@ -7,3 +7,11 @@ export async function listar(): Promise<Pessoa[]> {
 export async function inserir(registro: PessoaAtributos): Promise<Pessoa> {
   return await Pessoa.create(registro);
 }
+
+export async function pesquisarPorId(id: number | string): Promise<Pessoa | null> {
+  return await Pessoa.findByPk(id);
+}
+
+export async function deletar(pessoa: Pessoa | null): Promise<void> {
+  return await pessoa?.destroy();
+}
