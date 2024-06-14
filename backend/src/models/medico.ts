@@ -1,7 +1,7 @@
 import {DataTypes, Model} from "sequelize";
 import sequelize from "@config/db";
 
-interface MedicoAtributos {
+export interface MedicoAtributos {
   id?: number;
   crm: string;
   createdAt?: Date;
