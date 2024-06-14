@@ -2,6 +2,7 @@ import express, {Express} from "express";
 import dotenv from "dotenv";
 import pessoaController from "@controllers/pessoaController";
 import usuarioController from "@controllers/usuarioController";
+import medicoController from "@controllers/medicoController";
 import db from "@config/db";
 import bodyParser from "body-parser";
 
@@ -15,6 +16,7 @@ app.use(bodyParser.json());
 
 app.use(pessoaController);
 app.use(usuarioController);
+app.use(medicoController);
 
 app.listen(port, () => {
   console.log(`Servidor backend rodando na porta ${port}`);
