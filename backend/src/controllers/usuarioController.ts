@@ -1,11 +1,14 @@
 import {Router} from "express";
-import {create, buscarPorId, excluir, get} from "@services/usuarioService";
+import {criaUsuario, buscaUsuario, deletaUsuario, listaUsuarios, listaRegistros, criaRegistro} from "@services/usuarioService";
 
 const router = Router();
 
-router.get("/usuario", get);
-router.get("/usuario/:id", buscarPorId);
-router.post("/usuario", create);
-router.delete("/usuario/:id", excluir);
+router.post("/usuario", criaUsuario);
+router.get("/usuario", listaUsuarios);
+router.get("/usuario/:id", buscaUsuario);
+router.delete("/usuario/:id", deletaUsuario);
+
+router.get("/usuario/:id/registro", listaRegistros);
+router.post("/usuario/registro", criaRegistro);
 
 export default router;

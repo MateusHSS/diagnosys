@@ -37,14 +37,14 @@ Usuario.init(
     senha: {
       type: DataTypes.STRING,
       allowNull: false,
-      set(val: string) {
-        bcrypt
-          .hash(val, saltRounds)
-          .then((hash) => this.setDataValue("senha", hash));
-      },
-      get() {
-        return "";
-      },
+      // set(val: string) {
+      //   bcrypt
+      //     .hash(val, saltRounds)
+      //     .then((hash) => this.setDataValue("senha", hash));
+      // },
+      // get() {
+      //   return "";
+      // },
     },
     idPessoa: {
       type: DataTypes.INTEGER,
