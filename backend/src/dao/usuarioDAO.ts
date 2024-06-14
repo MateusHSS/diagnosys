@@ -1,4 +1,4 @@
-import Registro, {RegistroAtributos} from "models/registro";
+import Registro from "models/registro";
 import Usuario, {UsuarioAtributos} from "models/usuario";
 
 export async function listarUsuarios(): Promise<Usuario[]> {
@@ -19,8 +19,4 @@ export async function deletarUsuario(usuario: Usuario | null): Promise<void> {
 
 export async function listarRegistros(id: number | string): Promise<Registro[]> {
   return await Registro.findAll({where: {idPessoa: id} });
-}
-
-export async function criarRegistro(registro: RegistroAtributos): Promise<Registro> {
-  return await Registro.create(registro);
 }

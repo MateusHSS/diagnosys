@@ -1,4 +1,4 @@
-import {deletarUsuario, criarUsuario, listarUsuarios, buscarUsuario, listarRegistros, criarRegistro} from "dao/usuarioDAO";
+import {deletarUsuario, criarUsuario, listarUsuarios, buscarUsuario, listarRegistros} from "dao/usuarioDAO";
 import {NextFunction, Request, Response} from "express";
 
 export async function listaUsuarios(
@@ -108,25 +108,6 @@ export async function listaRegistros(
   } catch (error) {
     console.error('Erro ao listar os registros:', error);
     res.status(500).send('Erro ao listar os registros');
-    next(error);
-  }
-}
-
-export async function criaRegistro(
-  req: Request,
-  res: Response,
-  next: NextFunction
-): Promise<void> {
-  try {
-    const dados = req.body;
-
-    const registro = await criarRegistro(dados);
-
-    res.status(201).json(registro);
-
-  } catch (error) {
-    console.error('Erro ao adicionar registro:', error);
-    res.status(500).send('Erro ao adicionar registro');
     next(error);
   }
 }
