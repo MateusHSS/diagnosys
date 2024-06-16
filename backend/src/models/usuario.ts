@@ -8,7 +8,7 @@ export interface UsuarioAtributos {
   id?: number;
   login: string;
   senha: string;
-  id_pessoa: number;
+  idPessoa: number;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -17,7 +17,7 @@ class Usuario extends Model<UsuarioAtributos> implements UsuarioAtributos {
   public id!: number;
   public login!: string;
   public senha!: string;
-  public id_pessoa!: number;
+  public idPessoa!: number;
   public readonly createdAt?: Date;
   public readonly updatedAt?: Date;
 }
@@ -37,17 +37,17 @@ Usuario.init(
     senha: {
       type: DataTypes.STRING,
       allowNull: false,
-      set(val: string) {
-        bcrypt
-          .hash(val, saltRounds)
-          .then((hash) => this.setDataValue("senha", hash));
-      },
-      get() {
-        return "";
-      },
+      // set(val: string) {
+      //   bcrypt
+      //     .hash(val, saltRounds)
+      //     .then((hash) => this.setDataValue("senha", hash));
+      // },
+      // get() {
+      //   return "";
+      // },
     },
-    id_pessoa: {
-      type: DataTypes.NUMBER,
+    idPessoa: {
+      type: DataTypes.INTEGER,
       unique: true,
     },
   },

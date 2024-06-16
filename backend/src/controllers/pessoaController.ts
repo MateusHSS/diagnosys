@@ -1,10 +1,11 @@
 import {Router} from "express";
-import {get} from "@services/pessoaService";
-import {create} from "@services/pessoaService";
+import {criaPessoa, buscaPessoa, deletaPessoa, listaPessoas} from "@services/pessoaService";
 
 const router = Router();
 
-router.get("/pessoa", get);
-router.post("/pessoa", create);
+router.post("/pessoa", criaPessoa);
+router.get("/pessoa", listaPessoas);
+router.get("/pessoa/:id", buscaPessoa);
+router.delete("/pessoa/:id", deletaPessoa);
 
 export default router;
