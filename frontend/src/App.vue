@@ -9,4 +9,5 @@ import MainMenu from "./components/MainMenu.vue";
 </template>
 
 <style scoped>
+
 </style>

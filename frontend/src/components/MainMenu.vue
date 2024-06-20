@@ -9,14 +9,10 @@
                 <hr>
             </div>
             <div class="options">
-                <h2>Exames</h2>
-                <hr class="selected">
-                <h2>Consultas</h2>
-                <hr>
-                <h2>Médicos</h2>
-                <hr>
-                <h2>Remédios</h2>
-                <hr>
+                <button class="selected">Exames</button>
+                <button>Consultas</button>
+                <button>Médicos</button>
+                <button>Remédios</button>
             </div>
         </nav>
     </div>
@@ -81,14 +77,29 @@ h3{
     align-items: center; 
 }
 
-.options h2{
-    margin-top: 32px;
+.options button:first-child {
+  margin-top: 0; 
+}
+
+button{
+    margin-top:32px;
+    width: 270px;
+    border: none;
+    background-color: transparent;
+    font-size: 44px;
     font-weight: 300;
 }
 
-.options h2:first-child {
-  margin-top: 0; 
+button::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px; /* Adjust this value to change the border thickness */
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 2.5%, rgba(92, 92, 92, 0.511111) 25.5%, #5C5C5C 47.5%, rgba(92, 92, 92, 0.53) 72.5%, rgba(255, 255, 255, 0) 99%);
 }
+
 
 hr {
     width: 270px;
@@ -98,8 +109,8 @@ hr {
     background: linear-gradient(90deg, rgba(255, 255, 255, 0) 2.5%, rgba(92, 92, 92, 0.511111) 25.5%, #5C5C5C 47.5%, rgba(92, 92, 92, 0.53) 72.5%, rgba(255, 255, 255, 0) 99%);
 }
 
-.selected{
-background: linear-gradient(90deg, rgba(255, 255, 255, 0) 2.5%, #489982 47.5%, rgba(255, 255, 255, 0) 99%);
+.selected::before{
+    background-image:  linear-gradient(90deg, rgba(255, 255, 255, 0) 2.5%, #489982 47.5%, rgba(255, 255, 255, 0) 99%);
 }
 </style>
 
