@@ -9,10 +9,10 @@
                 <hr>
             </div>
             <div class="options">
-                <button class="selected">Exames</button>
-                <button>Consultas</button>
-                <button>Médicos</button>
-                <button>Remédios</button>
+                <button :class="{ 'selected': activeTab === 'exames' }" @click="selectTab('exames')"> Exames </button>
+                <button :class="{ 'selected': activeTab === 'consultas' }" @click="selectTab('consultas')">Consultas</button>
+                <button :class="{ 'selected': activeTab === 'medicos' }" @click="selectTab('medicos')">Médicos</button>
+                <button :class="{ 'selected': activeTab === 'remedios' }" @click="selectTab('remedios')">Remédios</button>
             </div>
         </nav>
     </div>
@@ -22,15 +22,16 @@
 export default {
     data() {
         return {
-            email: '',
-            password: ''
-        }
+            activeTab: 'exames' 
+        };
     },
     methods: {
-        login() {
+        selectTab(tab) {
+            this.activeTab = tab; 
+            this.$emit('selectTab', tab);
         }
     }
-}
+};
 </script>
 
 <style scoped>
@@ -88,16 +89,17 @@ button{
     background-color: transparent;
     font-size: 44px;
     font-weight: 300;
+    cursor:pointer;
 }
-
 button::before{
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 3px; /* Adjust this value to change the border thickness */
+    height: 4px; 
     background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 2.5%, rgba(92, 92, 92, 0.511111) 25.5%, #5C5C5C 47.5%, rgba(92, 92, 92, 0.53) 72.5%, rgba(255, 255, 255, 0) 99%);
+    transition: background-image 1s ease;
 }
 
 
