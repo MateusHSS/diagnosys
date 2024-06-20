@@ -1,181 +1,68 @@
 <template>
   <div>
-    <b-card style="height: 70vh">
-      <b-row>
-        <b-col cols="6">
-          <b-row class="justify-content-center mt-3 p-x-3">
-            <h1>Diagnosys</h1>
-          </b-row>
-          <b-row class="mt-3">
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque
-              repellendus sit, voluptate eius, commodi magnam at ipsa iusto nemo
-              non beatae fuga quod nesciunt dolore optio harum, molestias
-              blanditiis veniam.
-            </p>
-          </b-row>
-          <b-row class="bg-alert">
-            <img src="imgs/image_1.png" width="100%" height="100%" alt="" />
-          </b-row>
-        </b-col>
-        <b-col cols="6">
-          <b-row class="justify-content-center mt-3 px-3">
-            <h1>Cadastro</h1>
-          </b-row>
-          <b-row class="justify-content-center mt-3">
-            <b-form class="w-75">
-              <div v-if="etapa == 1">
-                <b-form-row class="mb-3">
-                  <TextInput
-                    placeholder="Nome"
-                    id="nome"
-                    name="nome"
-                    v-model="nome"
-                  />
-                </b-form-row>
-                <b-form-row class="mb-3">
-                  <TextInput
-                    placeholder="Sobrenome"
-                    id="sobrenome"
-                    name="sobrenome"
-                    v-model="sobrenome"
-                  />
-                </b-form-row>
-                <b-form-row class="mb-3">
-                  <TextInput
-                    placeholder="CPF"
-                    id="cpf"
-                    name="cpf"
-                    v-model="cpf"
-                  />
-                </b-form-row>
-                <b-form-row>
-                  <h4>Gênero</h4>
-                </b-form-row>
-                <b-form-row>
-                  <b-form-group>
-                    <b-form-radio v-model="genero" name="some-radios" value="1"
-                      >Masculino</b-form-radio
-                    >
-                    <b-form-radio v-model="genero" name="some-radios" value="2"
-                      >Feminino</b-form-radio
-                    >
-                    <b-form-radio v-model="genero" name="some-radios" value="3"
-                      >Não informar</b-form-radio
-                    >
-                  </b-form-group>
-                </b-form-row>
-                <b-form-row>
-                  <b-col cols="6">
-                    <b-row class="w-100 d-flex justify-content-center">
-                      <b-button
-                        id="botaoConfirmar"
-                        class="px-3"
-                        variant="outline-secondary"
-                      >
-                        Cancelar
-                      </b-button>
-                    </b-row>
-                  </b-col>
-                  <b-col cols="6">
-                    <b-row class="w-100 d-flex justify-content-center">
-                      <b-button
-                        id="botaoProsseguir"
-                        class="px-3"
-                        variant="info"
-                        @click="prosseguir"
-                      >
-                        Prosseguir
-                      </b-button>
-                    </b-row>
-                  </b-col>
-                </b-form-row>
-              </div>
-              <div v-if="etapa == 2">
-                <b-form-row class="mb-3">
-                  <TextInput id="email" name="email" placeholder="Email" />
-                </b-form-row>
-                <b-form-row class="mb-3">
-                  <TextInput id="senha" name="senha" placeholder="Senha" />
-                </b-form-row>
-                <b-form-row class="mb-3">
-                  <TextInput
-                    id="confirmarSenha"
-                    name="confirmarSenha"
-                    placeholder="Confirmar senha"
-                  />
-                </b-form-row>
-                <b-form-row>
-                  <b-col cols="6">
-                    <b-row class="w-100 d-flex justify-content-center">
-                      <b-button
-                        id="botaoRetornar"
-                        class="px-3"
-                        variant="outline-secondary"
-                        @click="retornar"
-                      >
-                        Retornar
-                      </b-button>
-                    </b-row>
-                  </b-col>
-                  <b-col cols="6">
-                    <b-row class="w-100 d-flex justify-content-center">
-                      <b-button
-                        id="botaoProsseguir"
-                        class="px-3"
-                        variant="info"
-                        @click="cadastrar"
-                      >
-                        Cadastrar
-                      </b-button>
-                    </b-row>
-                  </b-col>
-                </b-form-row>
-              </div>
-            </b-form>
-          </b-row>
-        </b-col>
-      </b-row>
-    </b-card>
+    <b-sidebar id="sidebar-1" title="Sidebar" visible no-header>
+      <div class="d-flex justify-content-center mt-5">
+        <h1>Diagnosys</h1>
+      </div>
+      <div class="d-flex justify-content-center mt-3">
+        <b-img
+          src="https://picsum.photos/500/500/?image=54"
+          class="rounded-circle"
+          width="100%"
+          fluid
+          thumbnail
+        ></b-img>
+      </div>
+      <div class="d-flex justify-content-center mt-3">
+        <h2>Olá, {{ nome || "Usuário teste" }}</h2>
+      </div>
+      <b-nav vertical class="w-100 mt-5 d-flex justify-content-center">
+        <b-nav-item class="text-center">Exames</b-nav-item>
+        <b-nav-item class="text-center">Consultas</b-nav-item>
+        <b-nav-item class="text-center">Médicos</b-nav-item>
+        <b-nav-item class="text-center">Remédios</b-nav-item>
+      </b-nav>
+    </b-sidebar>
+
+    <div class="w-100 d-flex flex-row-reverse">
+      <b-card class="w-75 mr-5" style="height: 70vh">
+        <b-row v-for="registro in registros" :key="registro.id">
+          <p>
+            CPF: {{ registro.cpf }}; nome: {{ registro.nome }}; RG:
+            {{ registro.rg }}; telefone: {{ registro.telefone }}
+          </p>
+        </b-row>
+        <!-- <b-row class="h-50">
+          <b-col>TEste 1</b-col>
+          <b-col>Teste 2</b-col>
+          <b-col>Teste 3</b-col>
+          <b-col>Teste 4</b-col>
+        </b-row> -->
+      </b-card>
+    </div>
   </div>
 </template>
 
 <script>
-import TextInput from "@/components/formularios/TextInput.vue";
-
 export default {
-  components: {
-    TextInput,
-  },
+  components: {},
   data() {
     return {
-      etapa: 1,
-      nome: "",
-      sobrenome: "",
-      cpf: "",
-      genero: "",
+      registros: [],
     };
   },
-  methods: {
-    prosseguir() {
-      this.etapa = 2;
-    },
-    retornar() {
-      this.etapa = 1;
-    },
-    cadastrar() {
-      console.warn("Funcionalidade ainda não implementada!");
-
-      this.$router.push({
-        path: "/login",
-      });
-    },
+  methods: {},
+  mounted() {
+    this.$http.get("/pessoa").then((res) => {
+      console.log("res", res);
+      this.registros = res.data;
+    });
   },
 };
 </script>
 
 <style scoped>
-#botaoConfirmar {
-  border-radius: 50px;
+.nav-item {
+  border-bottom: 1px solid black;
 }
 </style>
