@@ -11,16 +11,13 @@ export default {
     EspecialidadesGrid,
     EscolherHorario
   },
-  data(){
-    return{
-      
+  data() {
+    return {
+
     }
   },
   methods: {
-    handleGoBackClick() {
-      console.log('Image clicked!');
-      this.etapaAtual--;
-    }},
+  },
 
   setup() {
     const selectedDate = ref(null);
@@ -95,7 +92,6 @@ export default {
     const exames = ref([
       { descricao: "exame1" },
       { descricao: "Alergia" },
-
     ]);
 
     const handleEspecialidadeSelecionada = (descricao) => {
@@ -112,19 +108,25 @@ export default {
       selectedDate.value = day.date;
     };
 
+    const handleGoBackClick = () => {
+      etapaAtual.value--;
+      selectedDate.value = null;
+    };
+
     return {
       etapaAtual,
       selectedColor,
       attrs,
       especialidades,
       exames,
-      handleEspecialidadeSelecionada ,
+      handleEspecialidadeSelecionada,
       handleExameSelecionado,
       handleDayClick,
       selectedDate,
       especialidadeEscolihda,
-      exameEscolhida
-     
+      exameEscolhida,
+      handleGoBackClick
+
     };
   }
 }
@@ -134,12 +136,8 @@ export default {
   <div class="container">
     <div class="left-column">
       <div class="calendar">
-        <v-calendar 
-        :color="selectedColor" 
-        :attributes="attrs" 
-         @dayclick="handleDayClick"
-        is-expanded 
-        title-position="left" />
+        <v-calendar :color="selectedColor" :attributes="attrs" @dayclick="handleDayClick" is-expanded
+          title-position="left" />
       </div>
       <div class="logs">
         <h1>Próximos exames:</h1>
@@ -148,39 +146,28 @@ export default {
     <div class="right-column">
       <div class="menu">
         <div class="mainTitle">
-          <img 
-          v-if="etapaAtual !== 1" 
-          src="../assets/goBackIcon.png"
-          class="return"
-          @click="handleGoBackClick">
+          <img v-if="etapaAtual !== 1" src="../assets/goBackIcon.png" class="return" @click="handleGoBackClick">
           <h1>Marcar exame</h1>
-      </div>
-        <h2 v-if="etapaAtual === 1">Escolha a especialidade: </h2>
-        <h2 v-if="etapaAtual === 2 "> {{  especialidadeEscolihda }}</h2>
-        <h2 v-if="etapaAtual === 3 "> {{  especialidadeEscolihda }} >> {{  exameEscolhida }}</h2>
-        <EspecialidadesGrid
-        v-if="etapaAtual === 1" 
-        :especialidades="especialidades"
-        @opcao-selecionada="handleEspecialidadeSelecionada"/>
-        <EspecialidadesGrid
-        v-if="etapaAtual === 2" 
-        :especialidades="exames"
-        @opcao-selecionada="handleExameSelecionado"/>
-        <EscolherHorario
-        v-if="etapaAtual === 3" 
-        :data = "selectedDate"/>
         </div>
+        <h2 v-if="etapaAtual === 1">Escolha a especialidade: </h2>
+        <h2 v-if="etapaAtual === 2"> {{ especialidadeEscolihda }}</h2>
+        <h2 v-if="etapaAtual === 3"> {{ especialidadeEscolihda }} >> {{ exameEscolhida }}</h2>
+        <EspecialidadesGrid v-if="etapaAtual === 1" :especialidades="especialidades"
+          @opcao-selecionada="handleEspecialidadeSelecionada" />
+        <EspecialidadesGrid v-if="etapaAtual === 2" :especialidades="exames"
+          @opcao-selecionada="handleExameSelecionado" />
+        <EscolherHorario v-if="etapaAtual === 3" :data="selectedDate" />
       </div>
     </div>
+  </div>
 
   </div>
 </template>
 
 
 <style scoped>
-
 ::-webkit-scrollbar {
-  width: 8px; 
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -188,12 +175,12 @@ export default {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
 
 
@@ -263,17 +250,17 @@ export default {
 }
 
 
-.mainTitle{
+.mainTitle {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.return{
+
+.return {
   position: absolute;
   margin-top: 32px;
   margin-left: 32px;
   left: 0;
   cursor: pointer;
 }
-
 </style>
