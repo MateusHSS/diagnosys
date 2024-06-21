@@ -1,20 +1,29 @@
 <script>
-import { Calendar } from 'v-calendar';
+import { Calendar, DatePicker } from 'v-calendar';
 import EspecialidadesGrid from './EspecialidadadesGrid.vue';
+import EscolherHorario from './EscolherHorario.vue';
 import { ref } from 'vue';
 
 export default {
   components: {
     'v-calendar': Calendar,
-    EspecialidadesGrid
+    'v-date-picker': DatePicker,
+    EspecialidadesGrid,
+    EscolherHorario
   },
   data(){
     return{
       
     }
   },
+  methods: {
+    handleGoBackClick() {
+      console.log('Image clicked!');
+      this.etapaAtual--;
+    }},
 
   setup() {
+    const selectedDate = ref(null);
     const selectedColor = ref('blue');
     const attrs = ref([
       {
@@ -25,6 +34,7 @@ export default {
     ]);
     const etapaAtual = ref(1);
     let especialidadeEscolihda = ref('nada');
+    let exameEscolhida = ref('nada');
     const especialidades = ref([
       { descricao: "Acupuntura" },
       { descricao: "Alergia e imunologia" },
@@ -93,6 +103,15 @@ export default {
       especialidadeEscolihda.value = descricao;
     };
 
+    const handleExameSelecionado = (descricao) => {
+      etapaAtual.value++;
+      exameEscolhida.value = descricao;
+    };
+
+    const handleDayClick = (day) => {
+      selectedDate.value = day.date;
+    };
+
     return {
       etapaAtual,
       selectedColor,
@@ -100,7 +119,11 @@ export default {
       especialidades,
       exames,
       handleEspecialidadeSelecionada ,
-      especialidadeEscolihda
+      handleExameSelecionado,
+      handleDayClick,
+      selectedDate,
+      especialidadeEscolihda,
+      exameEscolhida
      
     };
   }
@@ -111,7 +134,12 @@ export default {
   <div class="container">
     <div class="left-column">
       <div class="calendar">
-        <v-calendar :color="selectedColor" :attributes="attrs" is-expanded title-position="left" />
+        <v-calendar 
+        :color="selectedColor" 
+        :attributes="attrs" 
+         @dayclick="handleDayClick"
+        is-expanded 
+        title-position="left" />
       </div>
       <div class="logs">
         <h1>Próximos exames:</h1>
@@ -123,15 +151,24 @@ export default {
           <img 
           v-if="etapaAtual !== 1" 
           src="../assets/goBackIcon.png"
-          class="return">
+          class="return"
+          @click="handleGoBackClick">
           <h1>Marcar exame</h1>
       </div>
-        <h2 v-if="especialidadeEscolihda === 'nada'">Escolha a especialidade: </h2>
-        <h2 v-if="especialidadeEscolihda !== 'nada'"> {{  especialidadeEscolihda }}</h2>
+        <h2 v-if="etapaAtual === 1">Escolha a especialidade: </h2>
+        <h2 v-if="etapaAtual === 2 "> {{  especialidadeEscolihda }}</h2>
+        <h2 v-if="etapaAtual === 3 "> {{  especialidadeEscolihda }} >> {{  exameEscolhida }}</h2>
         <EspecialidadesGrid
         v-if="etapaAtual === 1" 
         :especialidades="especialidades"
-        @especialidade-selecionada="handleEspecialidadeSelecionada"/>
+        @opcao-selecionada="handleEspecialidadeSelecionada"/>
+        <EspecialidadesGrid
+        v-if="etapaAtual === 2" 
+        :especialidades="exames"
+        @opcao-selecionada="handleExameSelecionado"/>
+        <EscolherHorario
+        v-if="etapaAtual === 3" 
+        :data = "selectedDate"/>
         </div>
       </div>
     </div>
@@ -199,7 +236,8 @@ export default {
 .menu {
   margin-top: 36px;
   margin-left: 40px;
-  width: 51vw;
+  min-width: 51vw;
+  min-height: 93vh;
   max-height: 93vh;
   overflow: auto;
   background-color: #FBF9FF;

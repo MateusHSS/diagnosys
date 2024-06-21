@@ -23,7 +23,7 @@
     },
     methods: {
     emitDescricao(descricao) {
-      this.$emit('especialidade-selecionada', descricao);
+      this.$emit('opcao-selecionada', descricao);
     }
   }
   }
