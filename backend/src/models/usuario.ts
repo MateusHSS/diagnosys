@@ -1,6 +1,7 @@
-import {DataTypes, Model} from "sequelize";
+import {BelongsTo, DataTypes, Model} from "sequelize";
 import bcrypt from "bcrypt";
 import sequelize from "@config/db";
+import Pessoa from "./pessoa";
 
 const saltRounds = process.env.SALT_ROUNDS || 10;
 
@@ -49,6 +50,10 @@ Usuario.init(
     idPessoa: {
       type: DataTypes.INTEGER,
       unique: true,
+      references: {
+        model: 'Pessoa',
+        key: 'id'
+      }
     },
   },
   {
@@ -59,5 +64,9 @@ Usuario.init(
     timestamps: true,
   }
 );
+
+Usuario.belongsTo(Pessoa, {foreignKey: 'idPessoa'});
+Pessoa.hasOne(Usuario, {foreignKey: 'idPessoa'});
+
 
 export default Usuario;
