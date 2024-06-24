@@ -1,4 +1,5 @@
-import {deletarMedico, criarMedico, listarMedicos, buscarMedico, listarRegistros, criarRegistro} from "dao/medicoDAO";
+import {deletarMedico, criarMedico, listarMedicos, buscarMedico} from "dao/medicoDAO";
+import {listarRegistros, criarRegistro} from "dao/registroDAO";
 import {NextFunction, Request, Response} from "express";
 
 export async function listaMedicos(

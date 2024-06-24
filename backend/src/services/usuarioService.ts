@@ -1,4 +1,5 @@
-import {deletarUsuario, criarUsuario, listarUsuarios, buscarUsuario, listarRegistros} from "dao/usuarioDAO";
+import {deletarUsuario, criarUsuario, listarUsuarios, buscarUsuario} from "dao/usuarioDAO";
+import {listarRegistros} from "dao/registroDAO";
 import {NextFunction, Request, Response} from "express";
 
 export async function listaUsuarios(
