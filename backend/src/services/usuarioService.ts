@@ -2,6 +2,7 @@ import {deletarUsuario, criarUsuario, listarUsuarios, buscarUsuario} from "dao/u
 import {listarReceitas} from "dao/receitaDAO";
 import {listarConsultas} from "dao/consultaDAO";
 import {NextFunction, Request, Response} from "express";
+import { criarPessoa } from "dao/pessoaDAO";
 
 export async function listaUsuarios(
   req: Request,
@@ -57,6 +58,12 @@ export async function criaUsuario(
     const dados = req.body;
 
     const usuario = await criarUsuario(dados);
+
+    const pessoa = await criarPessoa(dados);
+
+    usuario.idPessoa = pessoa.id;
+
+    await usuario.save();
 
     res.status(201).json(usuario);
 

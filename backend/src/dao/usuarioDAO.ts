@@ -1,3 +1,4 @@
+import Pessoa from "models/pessoa";
 import Usuario, {UsuarioAtributos} from "models/usuario";
 
 export async function listarUsuarios(): Promise<Usuario[]> {
@@ -9,7 +10,7 @@ export async function criarUsuario(dados: UsuarioAtributos): Promise<Usuario> {
 }
 
 export async function buscarUsuario(id: number | string): Promise<Usuario | null> {
-  return await Usuario.findByPk(id);
+  return await Usuario.findByPk(id, {include: [{model: Pessoa}]});
 }
 
 export async function deletarUsuario(usuario: Usuario | null): Promise<void> {
