@@ -1,5 +1,7 @@
 import {deletarMedico, criarMedico, listarMedicos, buscarMedico} from "dao/medicoDAO";
-import {listarRegistros, criarRegistro} from "dao/registroDAO";
+import {listarReceitas, criarReceita} from "dao/receitaDAO";
+import {listarConsultas, criarConsulta} from "dao/consultaDAO";
+import {buscarUsuario} from "dao/usuarioDAO";
 import {NextFunction, Request, Response} from "express";
 
 export async function listaMedicos(
@@ -91,7 +93,7 @@ export async function deletaMedico(
   }
 }
 
-export async function listaRegistros(
+export async function listaReceitas(
   req: Request,
   res: Response,
   next: NextFunction
@@ -99,7 +101,7 @@ export async function listaRegistros(
   try {
     const {id} = req.params;
 
-    const registro = await listarRegistros(id);
+    const registro = await listarReceitas(id);
 
     if (registro.length > 0) {
       res.status(200).json(registro);
@@ -113,21 +115,98 @@ export async function listaRegistros(
   }
 }
 
-export async function criaRegistro(
+export async function criaReceita(
   req: Request,
   res: Response,
   next: NextFunction
 ): Promise<void> {
   try {
     const dados = req.body;
+    
+    const medico = await buscarMedico(dados.idMedico);
 
-    const registro = await criarRegistro(dados);
-
-    res.status(201).json(registro);
+    if(!medico){
+      res.status(404).json({mensagem: 'Não há médico registrado com esse id'})
+    }
+    else {
+      const registro = await criarReceita(dados);
+      res.status(201).json(registro);
+    }
 
   } catch (error) {
     console.error('Erro ao adicionar registro:', error);
     res.status(500).send('Erro ao adicionar registro');
+    next(error);
+  }
+}
+
+export async function listaConsultas(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> {
+  try {
+    const {id} = req.params;
+
+    const registro = await listarConsultas(id);
+
+    if (registro.length > 0) {
+      res.status(200).json(registro);
+    } else {
+      res.status(404).send('Nenhuma consulta encontrada para o usuário fornecido');
+    }
+  } catch (error) {
+    console.error('Erro ao listar as consultas:', error);
+    res.status(500).send('Erro ao listar as consultas');
+    next(error);
+  }
+}
+
+export async function criaConsulta(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> {
+  try {
+    const dados = req.body;
+    
+    const medico = await buscarMedico(dados.idMedico);
+
+    if(!medico){
+      res.status(404).json({mensagem: 'Não há médico registrado com esse id'})
+    }
+    else {
+      const consulta = await criarConsulta(dados);
+      res.status(201).json(consulta);
+    }
+
+  } catch (error) {
+    console.error('Erro ao adicionar consulta:', error);
+    res.status(500).send('Erro ao adicionar consulta');
+    next(error);
+  }
+}
+
+export async function buscaUsuario(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> {
+  try {
+    const {id} = req.params;
+
+    const usuario = await buscarUsuario(id);
+
+    if(!usuario) {
+      res.status(404).json({mensagem: 'Usuario não encontrado!'})
+    }
+    else {
+      res.status(200).json(usuario);
+    }
+
+  } catch (error) {
+    console.error('Erro ao listar o usuario:', error);
+    res.status(500).send('Erro ao listar o usuario');
     next(error);
   }
 }
