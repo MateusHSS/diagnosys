@@ -1,13 +1,15 @@
 import {Router} from "express";
 import {criaMedico, buscaMedico, deletaMedico, listaMedicos, 
         listaReceitas, criaReceita, listaConsultas,
-        criaConsulta, buscaUsuario} from "@services/medicoService";
+        criaConsulta, buscaUsuario, buscaMedicoPorNome
+        } from "@services/medicoService";
 
 const router = Router();
 
 router.post("/medico", criaMedico);
 router.get("/medico", listaMedicos);
 router.get("/medico/:id", buscaMedico);
+router.get("/medico/:nome/busca", buscaMedicoPorNome);
 router.delete("/medico/:id", deletaMedico);
 router.get("/medico/:id/receita", listaReceitas);
 router.post("/medico/receita", criaReceita);

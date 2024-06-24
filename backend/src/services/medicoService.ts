@@ -1,6 +1,7 @@
-import {deletarMedico, criarMedico, listarMedicos, buscarMedico} from "dao/medicoDAO";
+import {deletarMedico, criarMedico, listarMedicos, buscarMedico, buscarMedicoPorNome} from "dao/medicoDAO";
 import {listarReceitas, criarReceita} from "dao/receitaDAO";
 import {listarConsultas, criarConsulta} from "dao/consultaDAO";
+import {criarPessoa} from "dao/pessoaDAO";
 import {buscarUsuario} from "dao/usuarioDAO";
 import {NextFunction, Request, Response} from "express";
 
@@ -49,6 +50,30 @@ export async function buscaMedico(
   }
 }
 
+export async function buscaMedicoPorNome(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> {
+  try {
+    const {nome} = req.params;
+
+    const medicos = await buscarMedicoPorNome(nome);
+
+    if(!medicos || medicos.length <= 0){
+      res.status(404).send('Não há nenhum medico com esse nome');
+    }
+    else {
+      res.status(200).json(medicos);
+    }
+    
+  } catch (error) {
+    console.error('Erro ao buscar medico:', error);
+    res.status(500).send('Erro ao buscar medico');
+    next(error);
+  }
+}
+
 export async function criaMedico(
   req: Request,
   res: Response,
@@ -57,7 +82,9 @@ export async function criaMedico(
   try {
     const dados = req.body;
 
-    const medico = await criarMedico(dados);
+    const pessoa = await criarPessoa({nome: dados.nome, email: dados.email, cpf: dados.cpf, rg: dados.rg, telefone: dados.telefone});
+
+    const medico = await criarMedico({idPessoa: pessoa.id, crm: dados.crm});
 
     res.status(201).json(medico);
 
