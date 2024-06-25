@@ -16,13 +16,13 @@
         </a>
       </div>
       <b-nav vertical class="w-100 mt-5 d-flex justify-content-center">
-        <b-nav-item class="text-center">Exames</b-nav-item>
-        <b-nav-item class="text-center">Consultas</b-nav-item>
-        <b-nav-item class="text-center">Médicos</b-nav-item>
-        <b-nav-item class="text-center">Remédios</b-nav-item>
+        <b-nav-item class="text-center" @click="emitirTexto('Exames')">Exames</b-nav-item>
+        <b-nav-item class="text-center" @click="emitirTexto('Consultas')">Consultas</b-nav-item>
+        <b-nav-item class="text-center" @click="emitirTexto('Médicos')">Médicos</b-nav-item>
+        <b-nav-item class="text-center" @click="emitirTexto('Remédios')">Remédios</b-nav-item>
       </b-nav>
     </b-sidebar>
-    <router-view></router-view>
+
   </div>
 </template>
 
@@ -49,6 +49,10 @@ export default {
       const value = `; ${document.cookie}`;
       const parts = value.split(`; ${name}=`);
       if (parts.length === 2) return parts.pop().split(';').shift();
+    },
+    emitirTexto(texto) {
+      // Emitir o texto clicado para que ele possa ser capturado por outros componentes
+      this.$emit('menuEscolhido', texto);
     }
   }
 };

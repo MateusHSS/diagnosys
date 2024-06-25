@@ -224,8 +224,6 @@ export default {
           senha: this.senha,
           idPessoa: Math.floor(Math.random() * 1000000) + 1
         });
-
-        console.log('Cadastro realizado com sucesso:', response.data);
         this.$router.push({
         path: "/login",
       });
