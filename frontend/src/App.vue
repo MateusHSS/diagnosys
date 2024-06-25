@@ -45,6 +45,11 @@ export default {
       this.$router.push({
         path: '/perfil'
       })
+    },
+    logout() {
+      this.$store.dispatch("logout").then(() => {
+        this.$router.push("/login");
+      });
     }
   },
   mounted() {
