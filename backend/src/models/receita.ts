@@ -1,7 +1,7 @@
 import {DataTypes, Model} from "sequelize";
 import sequelize from "@config/db";
 
-export interface RegistroAtributos {
+export interface ReceitaAtributos {
   id?: number;
   nome: string;
   idMedico: number;
@@ -11,7 +11,7 @@ export interface RegistroAtributos {
   updatedAt?: Date;
 }
 
-class Registro extends Model<RegistroAtributos> implements RegistroAtributos {
+class Receita extends Model<ReceitaAtributos> implements ReceitaAtributos {
   public id!: number;
   public nome!: string;
   public idMedico!: number;
@@ -21,7 +21,7 @@ class Registro extends Model<RegistroAtributos> implements RegistroAtributos {
   public readonly updatedAt?: Date;
 }
 
-Registro.init(
+Receita.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -47,11 +47,11 @@ Registro.init(
   },
   {
     sequelize,
-    modelName: "Registro",
-    tableName: "registro",
+    modelName: "Receita",
+    tableName: "receita",
     freezeTableName: true,
     timestamps: true,
   }
 );
 
-export default Registro;
+export default Receita;

@@ -65,7 +65,7 @@ Pessoa.init(
           : null;
       },
       set(val: string) {
-        this.setDataValue("rg", val.replace(/\D/g, ""));
+        if (val) this.setDataValue("rg", val.replace(/\D/g, ""));
       },
     },
     telefone: {

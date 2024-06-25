@@ -1,9 +1,11 @@
 import {DataTypes, Model} from "sequelize";
 import sequelize from "@config/db";
+import Pessoa from 'models/pessoa';
 
 export interface MedicoAtributos {
   id?: number;
   crm: string;
+  idPessoa: number;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -11,6 +13,7 @@ export interface MedicoAtributos {
 class Medico extends Model<MedicoAtributos> implements MedicoAtributos {
   public id!: number;
   public crm!: string;
+  public idPessoa!: number;
   public readonly createdAt?: Date;
   public readonly updatedAt?: Date;
 }
@@ -28,6 +31,14 @@ Medico.init(
       allowNull: false,
       unique: true,
     },
+    idPessoa: {
+      type: DataTypes.INTEGER,
+      unique: true,
+      references: {
+        model: 'Pessoa',
+        key: 'id',
+      },
+    },
   },
   {
     sequelize,
@@ -37,5 +48,8 @@ Medico.init(
     timestamps: true,
   }
 );
+
+Medico.belongsTo(Pessoa, { foreignKey: 'idPessoa' });
+Pessoa.hasOne(Medico, { foreignKey: 'idPessoa' });
 
 export default Medico;
