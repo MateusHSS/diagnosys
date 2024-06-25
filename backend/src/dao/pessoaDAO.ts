@@ -15,3 +15,7 @@ export async function buscarPessoa(id: number | string): Promise<Pessoa | null> 
 export async function deletarPessoa(pessoa: Pessoa | null): Promise<void> {
   return await pessoa?.destroy();
 }
+
+export async function atualizarPessoa(pessoa: Pessoa, dados: Partial<PessoaAtributos>): Promise<Pessoa> {
+  return await pessoa.update(dados);
+}

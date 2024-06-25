@@ -1,9 +1,10 @@
-import {deletarUsuario, criarUsuario, listarUsuarios, buscarUsuario, atualizarUsuario} from "dao/usuarioDAO";
+import {deletarUsuario, criarUsuario, listarUsuarios, buscarUsuario} from "dao/usuarioDAO";
 import {listarReceitas} from "dao/receitaDAO";
 import {listarConsultas} from "dao/consultaDAO";
 import {NextFunction, Request, Response} from "express";
 import Usuario from "models/usuario";
-import { criarPessoa } from "dao/pessoaDAO";
+import {criarPessoa, atualizarPessoa} from "dao/pessoaDAO";
+import Pessoa from "models/pessoa";
 
 export async function listaUsuarios(
   req: Request,
@@ -153,15 +154,21 @@ export async function atualizaUsuario(
     const { id } = req.params;
     const updateData = req.body;
 
-    const pessoa = await Usuario.findByPk(id);
+    const usuario = await Usuario.findByPk(id);
     
-    if (!pessoa) {
+    if (!usuario) {
       throw new Error('Usuário não encontrado');
     }
 
-    const usuario = await atualizarUsuario(pessoa, updateData);
+    const pessoa = await Pessoa.findByPk(usuario.idPessoa);
 
-    res.status(200).json(usuario);
+    if (!pessoa) {
+      throw new Error('Pessoa não encontrada');
+    }
+
+    const atualizado = await atualizarPessoa(pessoa, updateData);
+
+    res.status(200).json(atualizado);
   } catch (error) {
     console.error('Erro ao atualizar usuário:', error);
     res.status(500).send('Erro ao atualizar usuário');
