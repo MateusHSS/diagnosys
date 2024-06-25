@@ -33,7 +33,7 @@
 export default {
   data() {
     return {
-      nome: 'Renzinho gostoso'
+      nome: 'test'
     }
   },
   methods: {

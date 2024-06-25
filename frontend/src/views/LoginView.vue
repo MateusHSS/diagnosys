@@ -26,10 +26,10 @@
             <b-row class="justify-content-center mt-3">
               <b-form class="w-75">
                 <b-form-row class="mb-3">
-                  <TextInput id="email" name="email" placeholder="Email" />
+                  <TextInput id="email" name="email" placeholder="Email" v-model="email"/>
                 </b-form-row>
                 <b-form-row class="mb-3">
-                  <TextInput id="senha" name="senha" placeholder="Senha" />
+                  <TextInput id="senha" name="senha" placeholder="Senha" v-model="senha" :passwordInput="true"/>
                 </b-form-row>
                 <b-form-row>
                   <b-row class="w-100 mb-3">
@@ -66,10 +66,8 @@ export default {
   data() {
     return {
       etapa: 1,
-      nome: "",
-      sobrenome: "",
-      cpf: "",
-      genero: "",
+      email:"",
+      senha:""
     };
   },
   methods: {

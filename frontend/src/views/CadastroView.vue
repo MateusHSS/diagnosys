@@ -85,6 +85,7 @@
                           id="botaoConfirmar"
                           class="px-3"
                           variant="outline-secondary"
+                          @click="retornarLogin"
                         >
                           Cancelar
                         </b-button>
@@ -205,6 +206,11 @@ export default {
     },
     retornar() {
       this.etapa = 1;
+    },
+    retornarLogin(){
+      this.$router.push({
+        path: "/login",
+      });
     },
     async cadastrarUsuario() {
       try {
