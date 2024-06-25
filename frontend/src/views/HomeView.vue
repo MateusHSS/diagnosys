@@ -55,6 +55,11 @@ export default {
       pesquisaMedico: ''
     };
   },
+  mounted() {
+    this.$http.get(`/medico`).then(res => {
+      this.registros = res.data;
+    })
+  },
   methods: {
     pesquisarMedico() {
       this.$http.get(`/medico/${this.pesquisaMedico}/busca`).then((res) => {
