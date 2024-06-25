@@ -1,12 +1,12 @@
 <template>
   <div id="app" class="d-flex flex-column justify-content-center">
-    <b-sidebar id="sidebar-1" title="Sidebar" visible no-close-on-route-change no-header>
+    <b-sidebar id="sidebar-1" title="Sidebar" :visible="estaLogado" no-close-on-route-change no-header>
       <b-nav vertical class="w-100 mt-5 d-flex justify-content-center">
       <b-navbar-brand :to="{path: '/'}">
         <img src="imgs/logo.png" width="100%" alt="Kitten" thumbnail>
       </b-navbar-brand>
       <b-nav-text class="text-center">
-        <h5>Olá, {{ nome || "Usuário teste" }}</h5>
+        <h5>Olá, {{ $store.getters.user }}</h5>
       </b-nav-text>
       <b-nav-item :to="{path: '/perfil'}" class="text-center">
         <span class="text-secondary">Meu perfil <b-icon icon="pencil-square" variant="secondary" /></span>
@@ -34,11 +34,11 @@
 </style>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   data() {
-    return {
-      nome: 'Marco Túlio'
-    }
+    return {}
   },
   methods: {
     perfil() {
@@ -46,6 +46,14 @@ export default {
         path: '/perfil'
       })
     }
+  },
+  mounted() {
+    console.log('Usuario logado')
+  },  
+  computed: {
+    estaLogado() {
+      return this.$store.getters.isLoggedIn;
+    },
   }
 }
 </script>
