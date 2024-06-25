@@ -1,5 +1,3 @@
-import bcrypt from "bcrypt";
-
 import Pessoa from "models/pessoa";
 import Usuario, {UsuarioAtributos} from "models/usuario";
 
@@ -8,13 +6,9 @@ export async function listarUsuarios(): Promise<Usuario[]> {
 }
 
 export async function criarUsuario(dados: UsuarioAtributos): Promise<Usuario> {
-  const { senha, ...restoDados } = dados;
-  const hashedSenha = await bcrypt.hash(senha, 10);
-  return await Usuario.create({
-    ...restoDados,
-    senha: hashedSenha,
-  });
+  return await Usuario.create(dados);
 }
+
 
 export async function buscarUsuario(id: number | string): Promise<Usuario | null> {
   return await Usuario.findByPk(id, {include: [{model: Pessoa}]});

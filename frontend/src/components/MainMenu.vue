@@ -1,118 +1,58 @@
 <template>
-    <div class="main">
-        <nav class="navbar">
-            <h1>Logo</h1>
-            <div class="profile">
-                <img src="../assets/Male User.png">
-                <h3>Olá,</h3>
-                <h2>Nome Paciente</h2>
-                <hr>
-            </div>
-            <div class="options">
-                <button :class="{ 'selected': activeTab === 'exames' }" @click="selectTab('exames')"> Exames </button>
-                <button :class="{ 'selected': activeTab === 'consultas' }" @click="selectTab('consultas')">Consultas</button>
-                <button :class="{ 'selected': activeTab === 'medicos' }" @click="selectTab('medicos')">Médicos</button>
-                <button :class="{ 'selected': activeTab === 'remedios' }" @click="selectTab('remedios')">Remédios</button>
-            </div>
-        </nav>
-    </div>
+  <div id="app" class="d-flex flex-column justify-content-center">
+    <b-sidebar id="sidebar-1" title="Sidebar" visible no-close-on-route-change no-header>
+      <div class="d-flex justify-content-center mt-5">
+        <h1>Diagnosys</h1>
+      </div>
+      <div class="d-flex justify-content-center mt-3">
+        <b-img src="https://picsum.photos/500/500/?image=54" class="rounded-circle" width="100%" fluid thumbnail></b-img>
+      </div>
+      <div class="d-flex justify-content-center mt-3">
+        <h5>Olá, {{ nome || "Usuário teste" }}</h5>
+      </div>
+      <div class="d-flex justify-content-center">
+        <a href="#" @click="perfil">
+          <span class="text-secondary">Meu perfil <b-icon icon="pencil-square" variant="secondary" /></span>
+        </a>
+      </div>
+      <b-nav vertical class="w-100 mt-5 d-flex justify-content-center">
+        <b-nav-item class="text-center">Exames</b-nav-item>
+        <b-nav-item class="text-center">Consultas</b-nav-item>
+        <b-nav-item class="text-center">Médicos</b-nav-item>
+        <b-nav-item class="text-center">Remédios</b-nav-item>
+      </b-nav>
+    </b-sidebar>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-            activeTab: 'exames' 
-        };
-    },
-    methods: {
-        selectTab(tab) {
-            this.activeTab = tab; 
-            this.$emit('selectTab', tab);
-        }
+  data() {
+    return {
+      nome: ''
+    };
+  },
+  created() {
+    const cookieNome = this.getCookie('nome');
+    if (cookieNome) {
+      this.nome = cookieNome;
     }
+  },
+  methods: {
+    perfil() {
+      this.$router.push({
+        path: '/perfil'
+      });
+    },
+    getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+  }
 };
 </script>
 
 <style scoped>
-.main{
-    height: 100vh;
-    width: 347px;
-    left: 0;
-    justify-content: center;
-    align-items: center; 
-    background-color: #FBF9FF;
-    box-shadow: 3px 0px 28px 4px rgba(0, 0, 0, 0.25);
-}
-h1, h2, h3{
-    color: #2E2E2E;
-}
-h1{
-    font-size: 64px;
-}
-
-h2{
-    font-size: 36px;
-    font-weight:600;
-}
-
-h3{
-    font-size: 36px;
-}
-.navbar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh; /* Full height of the viewport */
-}
-.profile{
-    margin-top: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-}
-.options{
-    margin-top: 56px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-}
-
-.options button:first-child {
-  margin-top: 0; 
-}
-
-button{
-    margin-top:32px;
-    width: 270px;
-    border: none;
-    background-color: transparent;
-    font-size: 44px;
-    font-weight: 300;
-    cursor:pointer;
-}
-button::before{
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 4px; 
-    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 2.5%, rgba(92, 92, 92, 0.511111) 25.5%, #5C5C5C 47.5%, rgba(92, 92, 92, 0.53) 72.5%, rgba(255, 255, 255, 0) 99%);
-    transition: background-image 1s ease;
-}
-
-
-hr {
-    width: 270px;
-    height: 4px;
-    margin-top: 4px;
-    border: none;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 2.5%, rgba(92, 92, 92, 0.511111) 25.5%, #5C5C5C 47.5%, rgba(92, 92, 92, 0.53) 72.5%, rgba(255, 255, 255, 0) 99%);
-}
-
-.selected::before{
-    background-image:  linear-gradient(90deg, rgba(255, 255, 255, 0) 2.5%, #489982 47.5%, rgba(255, 255, 255, 0) 99%);
-}
 </style>
-

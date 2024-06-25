@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
     <b-container>
       <b-card style="height: 70vh">
         <b-row>

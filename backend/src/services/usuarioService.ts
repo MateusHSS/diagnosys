@@ -3,7 +3,9 @@ import {listarReceitas} from "dao/receitaDAO";
 import {listarConsultas} from "dao/consultaDAO";
 import {NextFunction, Request, Response} from "express";
 import Usuario from "models/usuario";
+import Pessoa from "models/pessoa";
 import { criarPessoa } from "dao/pessoaDAO";
+import bcrypt from "bcrypt";
 
 export async function listaUsuarios(
   req: Request,
@@ -58,9 +60,18 @@ export async function criaUsuario(
   try {
     const dados = req.body;
 
-    const usuario = await criarUsuario(dados);
+    const { senha, ...restoDados } = dados;
+    const hashedSenha = await bcrypt.hash(senha, 10);
 
-    const pessoa = await criarPessoa(dados);
+    const usuario = await criarUsuario({
+      ...restoDados,
+      senha: hashedSenha,
+    });
+
+    const pessoa = await criarPessoa({
+      ...restoDados,
+      senha: hashedSenha,
+    });
 
     usuario.idPessoa = pessoa.id;
 
@@ -168,3 +179,44 @@ export async function atualizaUsuario(
     next(error);
   }
 }
+
+export async function logarUsuario(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void>{
+  try {
+    const {email, senha} = req.body;
+
+    if (!email || !senha) {
+      res.status(400).json({ mensagem: "Email e senha são obrigatórios." });
+      return;
+    }
+
+    const usuario = await Usuario.findOne({ where: { login: email } });
+
+    if (!usuario) {
+      res.status(404).json({ mensagem: "Usuário não encontrado." });
+      return;
+    }
+
+    const senhaCorreta = await bcrypt.compare(senha, usuario.senha);
+
+    if (!senhaCorreta) {
+      res.status(401).json({ mensagem: "Senha incorreta." });
+      return;
+    }
+    let nome;
+    const pessoa = await Pessoa.findOne({ where: { email: email } });
+    if(pessoa){
+      nome = pessoa.nome;
+    }
+    // Se tudo estiver correto, pode-se considerar que o login foi bem-sucedido
+    res.status(200).json({ mensagem: `Login bem-sucedido!`, nome: nome });
+
+  }catch (error) {
+      console.error('Erro ao verificar usuário:', error);
+      res.status(500).send('Erro ao verificar usuário');
+      next(error);
+    }
+};

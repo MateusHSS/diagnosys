@@ -1,5 +1,5 @@
 <template>
-  <div>
+   <div class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
     <b-container>
       <b-card style="height: 70vh">
         <b-row>
@@ -58,6 +58,9 @@
 
 <script>
 import TextInput from "@/components/formularios/TextInput.vue";
+import axios from 'axios';
+import Cookies from 'js-cookie'; 
+
 
 export default {
   components: {
@@ -76,10 +79,34 @@ export default {
         path: "/cadastro",
       });
     },
-    entrar() {
-      this.$router.push({
-        path: "/",
-      });
+    async entrar() {
+      try{
+        const response = await axios.post('http://localhost:3000/logar', {
+          email: this.email,
+          senha: this.senha,
+        });
+        if(response.status >= 200){
+          const { email, nome } = response.data;
+          Cookies.set("session", email, {
+            path: '/',
+          });
+
+          Cookies.set("authenticated", true, {
+            path: '/',
+          });
+
+          Cookies.set("nome", nome, {
+            path: '/', 
+          });
+
+          this.$router.push({
+           path: "/",
+          });
+        }
+        
+      } catch(error){
+        console.error('Erro ao logar:', error);
+      }
     },
   },
 };
