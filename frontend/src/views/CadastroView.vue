@@ -107,9 +107,6 @@
                 </div>
                 <div v-if="etapa == 2">
                   <b-form-row class="mb-3">
-                    <TextInput id="usuario" name="usuario" placeholder="Usuário" v-model="usuario":passwordInput="false"/>
-                  </b-form-row>
-                  <b-form-row class="mb-3">
                     <TextInput id="email" name="email" placeholder="Email" v-model="email":passwordInput="false"/>
                   </b-form-row>
                   <b-form-row class="mb-3">
@@ -176,7 +173,6 @@ export default {
       sobrenome: "",
       cpf: "",
       genero: "",
-      usuario: "",
       email: "",
       senha: "",
       confirmarSenha: "",
@@ -193,7 +189,6 @@ export default {
     },
     dadosPreenchidos2() {
       return (
-        this.usuario !== "" &&
         this.email !== "" &&
         this.senha !== "" &&
         this.confirmarSenha !== ""
@@ -213,12 +208,17 @@ export default {
     },
     async cadastrarUsuario() {
       try {
-        const response = await axios.post('/usuario', {
+        const response = await axios.post('http://localhost:3000/usuario', {
           nome: this.nome,
-          login: this.login,
+          sobrenome: this.sobrenome,
+          cpf: this.cpf,
+          genero: this.genero,
+          login: this.email,
+          email: this.email,
           senha: this.senha,
-          idPessoa: 1
+          idPessoa: Math.floor(Math.random() * 1000000) + 1
         });
+
         console.log('Cadastro realizado com sucesso:', response.data);
         this.$router.push({
         path: "/login",

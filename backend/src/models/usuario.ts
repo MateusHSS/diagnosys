@@ -7,7 +7,6 @@ const saltRounds = process.env.SALT_ROUNDS || 10;
 
 export interface UsuarioAtributos {
   id?: number;
-  nome: string;
   login: string;
   senha: string;
   idPessoa: number;
@@ -17,7 +16,6 @@ export interface UsuarioAtributos {
 
 class Usuario extends Model<UsuarioAtributos> implements UsuarioAtributos {
   public id!: number;
-  public nome!: string;
   public login!: string;
   public senha!: string;
   public idPessoa!: number;
@@ -31,11 +29,6 @@ Usuario.init(
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
-    },
-    nome: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: false,
     },
     login: {
       type: DataTypes.STRING,
