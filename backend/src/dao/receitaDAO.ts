@@ -7,3 +7,7 @@ export async function criarReceita(registro: ReceitaAtributos): Promise<Receita>
 export async function listarReceitas(id: number | string): Promise<Receita[]> {
   return await Receita.findAll({where: {idPessoa: id} });
 }
+
+export async function listarReceitasMedico(id: number | string): Promise<Receita[]> {
+  return await Receita.findAll({where: {idMedico: id} });
+}

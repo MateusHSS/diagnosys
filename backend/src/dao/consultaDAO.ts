@@ -9,3 +9,7 @@ export async function criarConsulta(registro: ConsultaAtributos): Promise<Consul
 export async function listarConsultas(id: number | string): Promise<Consulta[]> {
   return await Consulta.findAll({where: {idPessoa: id}, include: { all: true, nested: true } });
 }
+
+export async function listarConsultasMedico(id: number | string): Promise<Consulta[]> {
+  return await Consulta.findAll({where: {idMedico: id}, include: { all: true, nested: true } });
+}

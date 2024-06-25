@@ -9,10 +9,14 @@
             </b-row>
             <b-row class="mt-3">
               <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque
-                repellendus sit, voluptate eius, commodi magnam at ipsa iusto
-                nemo non beatae fuga quod nesciunt dolore optio harum, molestias
-                blanditiis veniam.
+                Bem-vindo ao Sistema de Gestão de Consultas e Receitas Médicas!
+              </p>
+              <p>
+                Nosso aplicativo foi desenvolvido especialmente para facilitar o
+                agendamento e gerenciamento de consultas médicas, tanto para
+                pacientes quanto para médicos. Com uma interface intuitiva e
+                recursos avançados, oferecemos uma solução completa para atender
+                às suas necessidades de saúde.
               </p>
             </b-row>
             <b-row class="bg-alert">

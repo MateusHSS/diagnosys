@@ -1,6 +1,6 @@
 import {deletarMedico, criarMedico, listarMedicos, buscarMedico, buscarMedicoPorNome} from "dao/medicoDAO";
-import {listarReceitas, criarReceita} from "dao/receitaDAO";
-import {listarConsultas, criarConsulta} from "dao/consultaDAO";
+import {listarReceitasMedico, criarReceita} from "dao/receitaDAO";
+import {listarConsultasMedico, criarConsulta} from "dao/consultaDAO";
 import {criarPessoa} from "dao/pessoaDAO";
 import {buscarUsuario} from "dao/usuarioDAO";
 import {NextFunction, Request, Response} from "express";
@@ -126,9 +126,9 @@ export async function listaReceitas(
   next: NextFunction
 ): Promise<void> {
   try {
-    const {id} = req.params;
+    const {idMedico} = req.params;
 
-    const registro = await listarReceitas(id);
+    const registro = await listarReceitasMedico(idMedico);
 
     if (registro.length > 0) {
       res.status(200).json(registro);
@@ -173,9 +173,9 @@ export async function listaConsultas(
   next: NextFunction
 ): Promise<void> {
   try {
-    const {id} = req.params;
+    const {idMedico} = req.params;
 
-    const registro = await listarConsultas(id);
+    const registro = await listarConsultasMedico(idMedico);
 
     if (registro.length > 0) {
       res.status(200).json(registro);
