@@ -10,7 +10,7 @@ export async function criarMedico(dados: MedicoAtributos): Promise<Medico> {
 }
 
 export async function buscarMedico(id: number | string): Promise<Medico | null> {
-  return await Medico.findByPk(id);
+  return await Medico.findByPk(id, {include: {model: Pessoa}});
 }
 
 export async function deletarMedico(medico: Medico): Promise<void> {
