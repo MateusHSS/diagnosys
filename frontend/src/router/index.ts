@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
+import store from '@/config/store.js';
 
 Vue.use(VueRouter);
 
@@ -13,6 +14,9 @@ const router = new VueRouter({
       path: "/",
       name: "home",
       component: HomeView,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: "/login",
@@ -37,18 +41,39 @@ const router = new VueRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import("@/views/PerfilView.vue"),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/consultas',
       name: 'consultas',
-      component: () => import("@/views/ConsultasView.vue")
+      component: () => import("@/views/ConsultasView.vue"),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/exames',
       name: 'exames',
-      component: () => import("@/views/ExamesView.vue")
+      component: () => import("@/views/ExamesView.vue"),
+      meta: {
+        requiresAuth: true
+      }
     }
   ],
 });
+
+router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.requiresAuth)) {
+    if(store.getters.isLoggedIn) {
+      next();
+      return;
+    }
+    next('/login')
+  } else {
+    next();
+  }
+})
 
 export default router;

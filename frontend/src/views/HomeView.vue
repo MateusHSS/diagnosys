@@ -55,12 +55,6 @@ export default {
       });
     },
   },
-  mounted() {
-    this.$http.get("/medico").then((res) => {
-      console.log("res", res);
-      this.registros = res.data;
-    });
-  },
 };
 </script>
 
