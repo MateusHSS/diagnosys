@@ -16,7 +16,7 @@ Vue.use(BootstrapVueIcons);
 Vue.use(IconsPlugin);
 
 Vue.prototype.$http = Axios.create({
-  baseURL: "http://localhost:4090/",
+  baseURL: "http://localhost:3000",
 });
 
 new Vue({
