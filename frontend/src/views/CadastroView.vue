@@ -42,13 +42,6 @@
                     <h4>Gênero</h4>
                   </b-form-row>
                   <b-form-row>
-                    <b-form-group>
-                      <b-form-radio v-model="genero" name="some-radios" value="1">Masculino</b-form-radio>
-                      <b-form-radio v-model="genero" name="some-radios" value="2">Feminino</b-form-radio>
-                      <b-form-radio v-model="genero" name="some-radios" value="3">Não informar</b-form-radio>
-                    </b-form-group>
-                  </b-form-row>
-                  <b-form-row>
                     <b-col cols="6">
                       <b-row class="w-100 d-flex justify-content-center">
                         <b-button id="botaoConfirmar" class="px-3" variant="outline-secondary">
