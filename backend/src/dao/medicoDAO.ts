@@ -17,9 +17,8 @@ export async function deletarMedico(medico: Medico): Promise<void> {
   return await medico.destroy();
 }
 
-export async function buscarMedicoPorNome(nome: string): Promise<Pessoa[] | null> {
-  return await Pessoa.findAll({
-    where: { nome },
-    include: [{ model: Medico }]
+export async function buscarMedicoPorNome(nome: string): Promise<Medico[] | null> {
+  return await Medico.findAll({
+    include: [{ model: Pessoa, where: {nome} }]
   });
 }

@@ -44,9 +44,9 @@ const router = new VueRouter({
       component: () => import("@/views/ConsultasView.vue")
     },
     {
-      path: '/exames',
-      name: 'exames',
-      component: () => import("@/views/ExamesView.vue")
+      path: '/receita',
+      name: 'receita',
+      component: () => import("@/views/ReceitaView.vue")
     }
   ],
 });

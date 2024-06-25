@@ -11,9 +11,10 @@
       <b-nav-item :to="{path: '/perfil'}" class="text-center">
         <span class="text-secondary">Meu perfil <b-icon icon="pencil-square" variant="secondary" /></span>
       </b-nav-item>
-        <b-nav-item class="btn btn-light mb-3" :to="{path: '/exames'}">Exames</b-nav-item>
+        <b-nav-item class="btn btn-light mb-3" :to="{path: '/receita'}">Receitas</b-nav-item>
         <b-nav-item class="btn btn-light " :to="{path: '/consultas'}">Consultas</b-nav-item>
       </b-nav>
+      <b-nav-item @click="logout" class="btn btn-light fixed-bottom">Sair</b-nav-item>
     </b-sidebar>
     <router-view></router-view>
   </div>
