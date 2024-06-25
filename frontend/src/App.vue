@@ -7,13 +7,10 @@
       </b-navbar-brand>
       <b-nav-text class="text-center">
         <h5>Olá, {{ nome || "Usuário teste" }}</h5>
-      </div>
-      <div class="d-flex justify-content-center">
-        <a href="#" @click="perfil">
-          <span class="text-secondary">Meu perfil <b-icon icon="pencil-square" variant="secondary" /></span>
-        </a>
-      </div>
-      <b-nav vertical class="w-100 mt-5 d-flex justify-content-center">
+      </b-nav-text>
+      <b-nav-item :to="{path: '/perfil'}" class="text-center">
+        <span class="text-secondary">Meu perfil <b-icon icon="pencil-square" variant="secondary" /></span>
+      </b-nav-item>
         <b-nav-item class="btn btn-light mb-3" :to="{path: '/exames'}">Exames</b-nav-item>
         <b-nav-item class="btn btn-light " :to="{path: '/consultas'}">Consultas</b-nav-item>
       </b-nav>

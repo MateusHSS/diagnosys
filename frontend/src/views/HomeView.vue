@@ -39,10 +39,10 @@ export default {
       registros: [],
       nome: "",
       colunas: [
-        { key: 'nome', label: 'Nome' },
-        { key: 'cpf', label: 'CPF' },
-        { key: 'RG', label: 'RG' },
-        {key: 'telefone', label: 'Telefone'}
+        { key: 'Pessoa.nome', label: 'Nome' },
+        { key: 'crm', label: 'CRM' },
+        { key: 'Pessoa.email', label: 'Email'},
+        { key: 'Pessoa.telefone', label: 'Telefone'},
       ],
       pesquisaMedico: ''
     };
@@ -56,7 +56,7 @@ export default {
     },
   },
   mounted() {
-    this.$http.get("/pessoa").then((res) => {
+    this.$http.get("/medico").then((res) => {
       console.log("res", res);
       this.registros = res.data;
     });
