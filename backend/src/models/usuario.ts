@@ -1,8 +1,6 @@
-import {DataTypes, Model} from "sequelize";
-import bcrypt from "bcrypt";
+import {BelongsTo, DataTypes, Model} from "sequelize";
 import sequelize from "@config/db";
-
-const saltRounds = process.env.SALT_ROUNDS || 10;
+import Pessoa from "./pessoa";
 
 export interface UsuarioAtributos {
   id?: number;
@@ -37,18 +35,14 @@ Usuario.init(
     senha: {
       type: DataTypes.STRING,
       allowNull: false,
-      // set(val: string) {
-      //   bcrypt
-      //     .hash(val, saltRounds)
-      //     .then((hash) => this.setDataValue("senha", hash));
-      // },
-      // get() {
-      //   return "";
-      // },
     },
     idPessoa: {
       type: DataTypes.INTEGER,
       unique: true,
+      references: {
+        model: 'Pessoa',
+        key: 'id'
+      }
     },
   },
   {
@@ -59,5 +53,9 @@ Usuario.init(
     timestamps: true,
   }
 );
+
+Usuario.belongsTo(Pessoa, {foreignKey: 'idPessoa'});
+Pessoa.hasOne(Usuario, {foreignKey: 'idPessoa'});
+
 
 export default Usuario;
