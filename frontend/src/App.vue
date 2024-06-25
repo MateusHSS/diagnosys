@@ -1,10 +1,11 @@
 <template>
   <div id="app" class="d-flex flex-column justify-content-center">
     <b-sidebar id="sidebar-1" title="Sidebar" visible no-close-on-route-change no-header>
+      <b-nav vertical class="w-100 mt-5 d-flex justify-content-center">
       <b-navbar-brand :to="{path: '/'}">
         <img src="imgs/logo.png" width="100%" alt="Kitten" thumbnail>
       </b-navbar-brand>
-      <div class="d-flex justify-content-center mt-3">
+      <b-nav-text class="text-center">
         <h5>Olá, {{ nome || "Usuário teste" }}</h5>
       </div>
       <div class="d-flex justify-content-center">
