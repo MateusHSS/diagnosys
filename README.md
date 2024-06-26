@@ -239,9 +239,9 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
     4. Implementar funcionalidade de listar os usuários no backend [Iago]
     5. Implementar funcionalidade de editar um usuário no backend [Iago]
 
-(Repartimos a antiga história 6 nas histórias 9 e 10, visto que separamos o que é uma consulta e uma receita e cada uma agora tinha uma página específica. Além disso, a antiga história 7 passou a integrar essas novas histórias, pois é possível ver os dados do paciente nesse momento)
+(Repartimos a antiga história 6 nas histórias 11 e 12, visto que separamos o que é uma consulta e uma receita e cada uma agora tinha uma página específica. Além disso, a antiga história 7 passou a integrar essas novas histórias, pois é possível ver os dados do paciente nesse momento)
 
-- História Adicionada #9: Como médico, eu gostaria de visualizar as consultas cadastradas para os meus pacientes.
+- História Adicionada #10: Como médico, eu gostaria de visualizar as consultas cadastradas para os meus pacientes.
     
     **Tarefas e responsáveis**:
 
@@ -249,7 +249,7 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
     2. Implementar funcionalidade de ver as consultas cadastradas na tela de registros do usuário no frontend [Mateus]
     3. Implementar funcionalidade de listar as consultas cadastradas do usuário no backend [Filipe]
  
-- História Adicionada #10: Como médico, eu gostaria de visualizar as receitas cadastradas para os meus pacientes.
+- História Adicionada #12: Como médico, eu gostaria de visualizar as receitas cadastradas para os meus pacientes.
     
     **Tarefas e responsáveis**:
 
@@ -257,7 +257,7 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
     2. Implementar funcionalidade de ver as receitas cadastradas na tela de registros do usuário no frontend [Mateus]
     3. Implementar funcionalidade de listar as receitas cadastradas do usuário no backend [Filipe]
 
- (Por fim, removemos a história 8, visto que não se encaixava nesse momento da sprint desenvolver um administrador. Além disso, com as novas histórias, o trabalho demandou mais tempo do que esperado o que dificultou na execução dessa parte)
+ (Por fim, com as novas histórias, o trabalho demandou mais tempo do que esperado o que dificultou na execução dessa parte)
 
 ### Arquitetura Hexagonal
 
