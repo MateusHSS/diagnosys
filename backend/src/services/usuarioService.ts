@@ -184,6 +184,7 @@ export async function atualizaUsuario(
       throw new Error('Pessoa não encontrada');
     }
 
+    usuario.update(updateData);
     const atualizado = await atualizarPessoa(pessoa, updateData);
 
     res.status(200).json(atualizado);
