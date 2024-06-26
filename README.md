@@ -218,6 +218,26 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
     2. Criar tela de cadastro de consulta no frontend [Mateus]
     3. Implementar funcionalidade de cadastrar consulta no backend [Filipe]
     4. Implementar funcionalidade de ver consulta cadastrada no backend [Filipe]
+ 
+- História #9: Como administrador, eu gostaria de excluir um usuário.
+    
+    **Tarefas e responsáveis**:
+
+    1. Criar tela de usuários no figma [Hideki]
+    2. Criar tela de usuários no frontend [Hideki]
+    3. Implementar funcionalidade de ver todos os usuários no frontend [Iago]
+    4. Implementar funcionalidade de listar os usuários no backend [Iago]
+    5. Implementar funcionalidade de deletar um usuário no backend [Iago]
+ 
+- História #10: Como administrador, eu gostaria de editar um usuário.
+    
+    **Tarefas e responsáveis**:
+
+    1. Criar tela de usuários no figma [Hideki]
+    2. Criar tela de usuários no frontend [Hideki]
+    3. Implementar funcionalidade de ver todos os usuários no frontend [Iago]
+    4. Implementar funcionalidade de listar os usuários no backend [Iago]
+    5. Implementar funcionalidade de editar um usuário no backend [Iago]
 
 (Repartimos a antiga história 6 nas histórias 9 e 10, visto que separamos o que é uma consulta e uma receita e cada uma agora tinha uma página específica. Além disso, a antiga história 7 passou a integrar essas novas histórias, pois é possível ver os dados do paciente nesse momento)
 
