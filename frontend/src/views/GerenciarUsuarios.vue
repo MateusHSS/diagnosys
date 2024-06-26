@@ -12,7 +12,7 @@
           <b-row>
           </b-row>
           <b-row class="h-100 mh-100">
-            <Tabela :colunas="colunas" :dados="registros" ordenacaoCampo="id" :totalRegistros="registros.length" />
+            <Tabela :colunas="colunas" :dados="registros" ordenacaoCampo="id" :totalRegistros="registros.length" @row-clicked="handleRowClicked" />
           </b-row>
         </b-container>
       </b-card>
@@ -23,16 +23,17 @@
 <script>
 import Tabela from '@/components/tabela/Tabela.vue';
 import { mapState } from 'vuex';
+
 export default {
   name: 'gerenciarUsuarios',
-  components: {Tabela},
+  components: { Tabela },
   data() {
     return {
       colunas: [
-        {key: "id", label: "id"},
-        {key: 'login', label: "login"},
-        {key: 'idPessoa', label: "idPessoa"},
-        {key: 'tipo', label: "Tipo"}
+        { key: "id", label: "ID" },
+        { key: 'login', label: "Login" },
+        { key: 'idPessoa', label: "ID Pessoa" },
+        { key: 'tipo', label: "Tipo" },
       ],
       registros: [],
     }
@@ -40,6 +41,10 @@ export default {
   methods: {
     novaConsulta() {
       console.log(this.registros);
+    },
+    handleRowClicked(item) {
+      console.log('Linha clicada:', item);
+      // Aqui você pode implementar a lógica para lidar com o clique na linha, por exemplo, navegar para detalhes do usuário, etc.
     }
   },
   mounted() {
