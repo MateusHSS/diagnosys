@@ -22,6 +22,11 @@ module.exports = {
         type: Sequelize.INTEGER,
         unique: true,
       },
+      tipo: {
+        type: Sequelize.ENUM('P', 'M', 'A'),
+        defaultValue: 'P',
+        allowNull: false,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

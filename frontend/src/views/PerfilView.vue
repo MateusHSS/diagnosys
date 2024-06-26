@@ -41,6 +41,7 @@
 
 <script>
 import TextInput from '@/components/formularios/TextInput.vue';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'PerfilView',
@@ -70,7 +71,7 @@ export default {
     }
   },
   mounted() {
-    this.$http.get(`/usuario/4`).then((res) => {
+    this.$http.get(`/usuario/${this.user.id}`).then((res) => {
       console.log("res", res);
       const dados = res.data;
 
@@ -81,6 +82,9 @@ export default {
       this.telefone = dados.Pessoa.telefone;
     });
   },
+  computed: {
+    ...mapGetters(["user"])
+  }
 };
 </script>
 

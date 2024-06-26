@@ -61,7 +61,7 @@ export async function buscaMedicoPorNome(
     const medicos = await buscarMedicoPorNome(nome);
 
     if(!medicos || medicos.length <= 0){
-      res.status(404).send('Não há nenhum medico com esse nome');
+      res.status(200).json([]);
     }
     else {
       res.status(200).json(medicos);

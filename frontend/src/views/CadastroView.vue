@@ -27,79 +27,31 @@
               <b-form class="w-75">
                 <div v-if="etapa == 1">
                   <b-form-row class="mb-3">
-                    <TextInput
-                      placeholder="Nome"
-                      id="nome"
-                      name="nome"
-                      v-model="nome"
-                      :passwordInput="false"
-                    />
+                    <TextInput placeholder="Nome" id="nome" name="nome" v-model="nome" />
                   </b-form-row>
                   <b-form-row class="mb-3">
-                    <TextInput
-                      placeholder="Sobrenome"
-                      id="sobrenome"
-                      name="sobrenome"
-                      v-model="sobrenome"
-                      :passwordInput="false"
-                    />
+                    <TextInput placeholder="RG" id="rg" name="rg" v-model="rg" />
                   </b-form-row>
                   <b-form-row class="mb-3">
-                    <TextInput
-                      placeholder="CPF"
-                      id="cpf"
-                      name="cpf"
-                      v-model="cpf"
-                      :passwordInput="false"
-                    />
+                    <TextInput placeholder="CPF" id="cpf" name="cpf" v-model="cpf" />
+                  </b-form-row>
+                  <b-form-row class="mb-3">
+                    <TextInput id="email" name="email" placeholder="Email" v-model="email" />
                   </b-form-row>
                   <b-form-row>
                     <h4>Gênero</h4>
                   </b-form-row>
                   <b-form-row>
-                    <b-form-group>
-                      <b-form-radio
-                        v-model="genero"
-                        name="some-radios"
-                        value="1"
-                        >Masculino</b-form-radio
-                      >
-                      <b-form-radio
-                        v-model="genero"
-                        name="some-radios"
-                        value="2"
-                        >Feminino</b-form-radio
-                      >
-                      <b-form-radio
-                        v-model="genero"
-                        name="some-radios"
-                        value="3"
-                        >Não informar</b-form-radio
-                      >
-                    </b-form-group>
-                  </b-form-row>
-                  <b-form-row>
                     <b-col cols="6">
                       <b-row class="w-100 d-flex justify-content-center">
-                        <b-button
-                          id="botaoConfirmar"
-                          class="px-3"
-                          variant="outline-secondary"
-                          @click="retornarLogin"
-                        >
+                        <b-button id="botaoConfirmar" class="px-3" variant="outline-secondary">
                           Cancelar
                         </b-button>
                       </b-row>
                     </b-col>
                     <b-col cols="6">
                       <b-row class="w-100 d-flex justify-content-center">
-                        <b-button
-                          id="botaoProsseguir"
-                          class="px-3"
-                          variant="info"
-                          @click="prosseguir"
-                          :disabled="!dadosPreenchidos"
-                        >
+                        <b-button id="botaoProsseguir" class="px-3" variant="info" @click="prosseguir">
                           Prosseguir
                         </b-button>
                       </b-row>
@@ -108,42 +60,25 @@
                 </div>
                 <div v-if="etapa == 2">
                   <b-form-row class="mb-3">
-                    <TextInput id="email" name="email" placeholder="Email" v-model="email":passwordInput="false"/>
+                    <TextInput id="login" name="login" placeholder="Login" v-model="login" />
                   </b-form-row>
                   <b-form-row class="mb-3">
-                    <TextInput id="senha" name="senha" placeholder="Senha" v-model="senha" :passwordInput="true"/>
+                    <TextInput id="senha" name="senha" placeholder="Senha" v-model="senha" />
                   </b-form-row>
                   <b-form-row class="mb-3">
-                    <TextInput
-                      id="confirmarSenha"
-                      name="confirmarSenha"
-                      placeholder="Confirmar senha"
-                      v-model="confirmarSenha"
-                      :passwordInput="true"
-                    />
+                    <TextInput id="confirmarSenha" name="confirmarSenha" placeholder="Confirmar senha" v-model="confirmaSenha" />
                   </b-form-row>
                   <b-form-row>
                     <b-col cols="6">
                       <b-row class="w-100 d-flex justify-content-center">
-                        <b-button
-                          id="botaoRetornar"
-                          class="px-3"
-                          variant="outline-secondary"
-                          @click="retornar"
-                        >
+                        <b-button id="botaoRetornar" class="px-3" variant="outline-secondary" @click="retornar">
                           Retornar
                         </b-button>
                       </b-row>
                     </b-col>
                     <b-col cols="6">
                       <b-row class="w-100 d-flex justify-content-center">
-                        <b-button
-                          id="botaoProsseguir"
-                          class="px-3"
-                          variant="info"
-                          @click="cadastrarUsuario"
-                          :disabled="!dadosPreenchidos2"
-                        >
+                        <b-button id="botaoProsseguir" class="px-3" variant="info" @click="cadastrar">
                           Cadastrar
                         </b-button>
                       </b-row>
@@ -171,30 +106,15 @@ export default {
     return {
       etapa: 1,
       nome: "",
-      sobrenome: "",
+      rg: "",
       cpf: "",
       genero: "",
+      telefone: "",
       email: "",
+      login: "",
       senha: "",
-      confirmarSenha: "",
+      confirmaSenha: ""
     };
-  },
-  computed: {
-    dadosPreenchidos() {
-      return (
-        this.nome !== "" &&
-        this.sobrenome !== "" &&
-        this.cpf !== "" &&
-        this.genero !== ""
-      );
-    },
-    dadosPreenchidos2() {
-      return (
-        this.email !== "" &&
-        this.senha !== "" &&
-        this.confirmarSenha !== ""
-      );
-    },
   },
   methods: {
     prosseguir() {
@@ -207,10 +127,17 @@ export default {
     retornar() {
       this.etapa = 1;
     },
-    retornarLogin(){
-      this.$router.push({
-        path: "/login",
-      });
+    cadastrar() {
+      this.$store
+        .dispatch("register", { nome: this.nome, cpf: this.cpf, email: this.email, senha: this.senha, rg: this.rg, telefone: this.telefone, login: this.login })
+        .then(() => {
+          this.$router.push("/")
+        })
+        .catch(err => console.log(err));
+        
+      // this.$http.post('/register', {nome: this.nome, cpf: this.cpf, email: this.email, senha: this.senha, rg: this.rg, telefone: this.telefone, login: this.login}).then(res => {
+      //   console.log('res', res);
+      // })
     },
     async cadastrarUsuario() {
       try {
