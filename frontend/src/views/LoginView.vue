@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-container>
-      <b-card style="height: 70vh">
+      <b-card style="height: 80vh">
         <b-row>
           <b-col cols="6">
             <b-row class="justify-content-center mt-3 p-x-3">
@@ -102,7 +102,9 @@ export default {
 </script>
 
 <style scoped>
-#botaoConfirmar {
-  border-radius: 50px;
+
+#botaoEntrar,
+#botaoCadastrar{
+  border-radius: 25px;
 }
 </style>

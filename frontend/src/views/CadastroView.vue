@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-container>
-      <b-card style="height: 70vh">
+      <b-card style="height: 80vh">
         <b-row>
           <b-col cols="6">
             <b-row class="justify-content-center mt-3 p-x-3">
@@ -9,10 +9,14 @@
             </b-row>
             <b-row class="mt-3">
               <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque
-                repellendus sit, voluptate eius, commodi magnam at ipsa iusto
-                nemo non beatae fuga quod nesciunt dolore optio harum, molestias
-                blanditiis veniam.
+                Bem-vindo ao Sistema de Gestão de Consultas e Receitas Médicas!
+              </p>
+              <p>
+                Nosso aplicativo foi desenvolvido especialmente para facilitar o
+                agendamento e gerenciamento de consultas médicas, tanto para
+                pacientes quanto para médicos. Com uma interface intuitiva e
+                recursos avançados, oferecemos uma solução completa para atender
+                às suas necessidades de saúde.
               </p>
             </b-row>
             <b-row class="bg-alert">
@@ -39,12 +43,9 @@
                     <TextInput id="email" name="email" placeholder="Email" v-model="email" />
                   </b-form-row>
                   <b-form-row>
-                    <h4>Gênero</h4>
-                  </b-form-row>
-                  <b-form-row>
                     <b-col cols="6">
                       <b-row class="w-100 d-flex justify-content-center">
-                        <b-button id="botaoConfirmar" class="px-3" variant="outline-secondary">
+                        <b-button id="botaoConfirmar" class="px-3" variant="outline-secondary" @click="cancelar"> 
                           Cancelar
                         </b-button>
                       </b-row>
@@ -122,6 +123,9 @@ export default {
     retornar() {
       this.etapa = 1;
     },
+    cancelar(){
+      this.$router.push("/login")
+    },
     cadastrar() {
       this.$store
         .dispatch("register", { nome: this.nome, cpf: this.cpf, email: this.email, senha: this.senha, rg: this.rg, telefone: this.telefone, login: this.login })
@@ -139,7 +143,11 @@ export default {
 </script>
 
 <style scoped>
-#botaoConfirmar {
+#botaoConfirmar,
+#botaoProsseguir,
+#botaoRetornar 
+ {
   border-radius: 50px;
 }
+
 </style>
