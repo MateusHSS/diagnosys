@@ -17,12 +17,12 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use(cors({
-      origin: '*',
-      credentials: true,
-      methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
-      preflightContinue: false,
-      optionsSuccessStatus: 204,
-    }));
+  origin: '*',
+  credentials: true,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+}));
 
 app.use(authController);
 app.use(pessoaController);
