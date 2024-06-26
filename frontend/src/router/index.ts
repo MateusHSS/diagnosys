@@ -63,6 +63,11 @@ const router = new VueRouter({
       meta: {
         requiresAuth: true
       }
+    },
+    {
+      path: '/gerenciarUsuarios',
+      name: 'gerenciarUsuarios',
+      component: () => import("@/views/GerenciarUsuarios.vue")
     }
   ],
 });

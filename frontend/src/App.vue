@@ -10,6 +10,7 @@
         </b-nav-item>
         <b-nav-item class="btn btn-light mb-3" :to="{path: '/receita'}">Receitas</b-nav-item>
         <b-nav-item class="btn btn-light " :to="{path: '/consultas'}">Consultas</b-nav-item>
+        <b-nav-item class="btn btn-light" v-if="user.tipo === 'A'" :to="{ path: '/gerenciarUsuarios' }">Usuários</b-nav-item>
         <!-- <b-nav-item class="btn btn-light" v-if="user.tipo === 'M'" :to="{ path: '/' }">Consultas</b-nav-item> -->
       </b-nav>
       <b-nav-item @click="logout" class="btn btn-light fixed-bottom">Sair</b-nav-item>
