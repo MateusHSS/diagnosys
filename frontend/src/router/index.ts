@@ -57,6 +57,11 @@ const router = new VueRouter({
       path: '/receita',
       name: 'receita',
       component: () => import("@/views/ReceitaView.vue")
+    },
+    {
+      path: '/gerenciarUsuarios',
+      name: 'gerenciarUsuarios',
+      component: () => import("@/views/GerenciarUsuarios.vue")
     }
   ],
 });
