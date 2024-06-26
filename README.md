@@ -241,7 +241,7 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
 
 (Repartimos a antiga história 6 nas histórias 11 e 12, visto que separamos o que é uma consulta e uma receita e cada uma agora tinha uma página específica. Além disso, a antiga história 7 passou a integrar essas novas histórias, pois é possível ver os dados do paciente nesse momento)
 
-- História Adicionada #10: Como médico, eu gostaria de visualizar as consultas cadastradas para os meus pacientes.
+- História Adicionada #11: Como médico, eu gostaria de visualizar as consultas cadastradas para os meus pacientes.
     
     **Tarefas e responsáveis**:
 
