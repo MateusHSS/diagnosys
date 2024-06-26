@@ -12,7 +12,14 @@
           <b-row>
           </b-row>
           <b-row class="h-100 mh-100">
-            <Tabela :colunas="colunas" :dados="registros" ordenacaoCampo="id" :totalRegistros="registros.length" @row-clicked="handleRowClicked" />
+            <Tabela
+              :colunas="colunas"
+              :dados="registros"
+              ordenacaoCampo="id"
+              :totalRegistros="registros.length"
+              @linha-clicada="handleLinhaClicada"
+            >
+            </Tabela>
           </b-row>
         </b-container>
       </b-card>
@@ -42,10 +49,12 @@ export default {
     novaConsulta() {
       console.log(this.registros);
     },
-    handleRowClicked(item) {
-      console.log('Linha clicada:', item);
-      // Aqui você pode implementar a lógica para lidar com o clique na linha, por exemplo, navegar para detalhes do usuário, etc.
-    }
+    handleLinhaClicada(item) {
+      this.$router.push({
+        path: '/editarUsuario',
+        query: {id: item.id}
+      })
+    },
   },
   mounted() {
     let url = '/usuario';

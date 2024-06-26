@@ -2,9 +2,9 @@
   <b-card class="resultado w-100 mt-3">
     <!-- <QuantidadePagina v-if="selecionarQuantidade" @selecionou="selecionarQuantidadePagina"
       :quantidadePorPagina="quantidadePorPagina" v-show="exibir" /> -->
-    <b-table :items="dados" :fields="colunas" :per-page="porPagina" :current-page="paginaAtual"
+      <b-table :items="dados" :fields="colunas" :per-page="porPagina" :current-page="paginaAtual"
       @sort-changed="mudarOrdenacao" striped responsive hover v-show="exibir" :no-local-sorting="!emMemoria"
-      :sort-by="ordenacaoCampo" :sort-desc="ordenacaoDesc">
+      :sort-by="ordenacaoCampo" :sort-desc="ordenacaoDesc" @row-clicked="handleRowClick">
       <template v-slot:head(selecionadoMassa)="data">
         <span>
           <b-form-checkbox name="selecionarTodos" v-model="selecionarTodosCheckbox" @change="selecionarTodos($event)" />
@@ -179,6 +179,9 @@ export default {
             : (this.paginaAtual - 1) * this.quantidadePorPagina + this.quantidadePorPagina,
         total: this.quantidadeTotalRegistros,
       };
+    },
+    handleRowClick(item) {
+      this.$emit('linha-clicada', item);
     },
     selecionarQuantidadePagina(event) {
       this.quantidadePorPaginaLocal = event;
