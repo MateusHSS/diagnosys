@@ -39,6 +39,9 @@
                     <TextInput id="email" name="email" placeholder="Email" v-model="email" />
                   </b-form-row>
                   <b-form-row>
+                    <h4>Gênero</h4>
+                  </b-form-row>
+                  <b-form-row>
                     <b-col cols="6">
                       <b-row class="w-100 d-flex justify-content-center">
                         <b-button id="botaoConfirmar" class="px-3" variant="outline-secondary">
@@ -63,7 +66,8 @@
                     <TextInput id="senha" name="senha" placeholder="Senha" v-model="senha" />
                   </b-form-row>
                   <b-form-row class="mb-3">
-                    <TextInput id="confirmarSenha" name="confirmarSenha" placeholder="Confirmar senha" v-model="confirmaSenha" />
+                    <TextInput id="confirmarSenha" name="confirmarSenha" placeholder="Confirmar senha"
+                      v-model="confirmaSenha" />
                   </b-form-row>
                   <b-form-row>
                     <b-col cols="6">
@@ -126,7 +130,7 @@ export default {
           this.$router.push("/")
         })
         .catch(err => console.log(err));
-        
+
       // this.$http.post('/register', {nome: this.nome, cpf: this.cpf, email: this.email, senha: this.senha, rg: this.rg, telefone: this.telefone, login: this.login}).then(res => {
       //   console.log('res', res);
       // })

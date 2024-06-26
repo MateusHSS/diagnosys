@@ -17,6 +17,7 @@
 
 <script>
 import Tabela from '@/components/tabela/Tabela.vue';
+import {mapState } from 'vuex';
 export default {
   name: 'ReceitaView',
   components: { Tabela },
@@ -30,15 +31,16 @@ export default {
 
     }
   },
-  methods: {
-
-  },
+  methods: {},
   mounted() {
-    this.$http.get(`/usuario/1/receita`).then(res => {
+    this.$http.get(`/usuario/${this.user.id}/receita`).then(res => {
       const dados = res.data;
 
       this.registros = dados;
     })
+  },
+  computed: {
+    ...mapState(['user'])
   }
 }
 </script>

@@ -31,7 +31,7 @@
             </b-col>
           </b-row>
           <b-row class="mb-3 d-flex justify-content-center">
-            <b-button variant="info" class="font-weight-bold">SALVAR</b-button>
+            <b-button variant="info" class="font-weight-bold" @click="salvar">SALVAR</b-button>
           </b-row>
         </b-container>
       </b-card>
@@ -41,7 +41,7 @@
 
 <script>
 import TextInput from '@/components/formularios/TextInput.vue';
-import { mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
   name: 'PerfilView',
@@ -65,8 +65,8 @@ export default {
       })
     },
     salvar() {
-      this.$http.put(`/usuario/4`, {nome: this.nome, rg: this.rg, telefone: this.telefone}).then(res => {
-        console.log(res);
+      this.$http.put(`/usuario/${this.user.id}`, {nome: this.nome, rg: this.rg, telefone: this.telefone}).then(res => {
+        console.log('res', res);
       })
     }
   },
@@ -83,7 +83,7 @@ export default {
     });
   },
   computed: {
-    ...mapGetters(["user"])
+    ...mapState(["user"])
   }
 };
 </script>

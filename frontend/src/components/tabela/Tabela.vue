@@ -1,5 +1,5 @@
 <template>
-  <b-card class="resultado w-100 mt-3" v-if="sempreVisivel || dados.length > 0">
+  <b-card class="resultado w-100 mt-3">
     <!-- <QuantidadePagina v-if="selecionarQuantidade" @selecionou="selecionarQuantidadePagina"
       :quantidadePorPagina="quantidadePorPagina" v-show="exibir" /> -->
     <b-table :items="dados" :fields="colunas" :per-page="porPagina" :current-page="paginaAtual"

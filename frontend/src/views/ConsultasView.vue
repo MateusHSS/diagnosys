@@ -6,14 +6,10 @@
           <b-row class="d-flex justify-content-center">
             <h1>Consultas</h1>
           </b-row>
+          <b-row v-if="user.tipo === 'M'" class="d-flex justify-content-center">
+            <b-button variant="info" @click="novaConsulta">Nova consulta</b-button>
+          </b-row>
           <b-row>
-            <!-- <b-col cols="10">
-              <TextInput id="pesquisaMedico" name="pesquisaMedico" placeholder="Pesquisar..."
-                v-model="pesquisaMedico" />
-            </b-col> -->
-            <!-- <b-col cols="2">
-              <b-button class="btn" variant='info' @click="pesquisarMedico">PESQUISAR</b-button>
-            </b-col> -->
           </b-row>
           <b-row class="h-100 mh-100">
             <Tabela :colunas="colunas" :dados="registros" ordenacaoCampo="id" :totalRegistros="registros.length" />
@@ -26,6 +22,7 @@
 
 <script>
 import Tabela from '@/components/tabela/Tabela.vue';
+import { mapState } from 'vuex';
 export default {
   name: 'ConsultasView',
   components: {Tabela},
@@ -42,14 +39,26 @@ export default {
     }
   },
   methods: {
-
+    novaConsulta() {
+      console.log('Não implementado')
+    }
   },
   mounted() {
-    this.$http.get(`/usuario/1/consulta`).then(res => {
+    let url = '';
+    if(this.user.tipo == 'M') {
+      url = `/medico/${this.user.id}/consulta`;
+    } else {
+      url = `/usuario/${this.user.id}/consulta`;
+    }
+
+    this.$http.get(url).then(res => {
       const dados = res.data;
 
       this.registros = dados;
     })
+  },
+  computed: {
+    ...mapState(['user'])
   }
 }
 </script>

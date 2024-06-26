@@ -9,16 +9,16 @@ export default new Vuex.Store({
   state: {
     status: '',
     token: localStorage.getItem('token') || '',
-    user: {},
+    user: {}
   },
   mutations: {
     auth_request(state) {
       state.status = 'loading'
     },
-    auth_success(state, token, user) {
+    auth_success(state, dados) {
       state.status = 'success'
-      state.token = token
-      state.user = user
+      state.token = dados.token
+      state.user = dados.user
     },
     auth_error(state) {
       state.status = 'error'
@@ -40,7 +40,7 @@ export default new Vuex.Store({
             // Add the following line:
             axios.defaults.headers.common['Authorization'] = token
             console.log('usuariooo', user);
-            commit('auth_success', token, user)
+            commit('auth_success', {token, user})
             resolve(resp)
           })
           .catch(err => {

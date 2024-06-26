@@ -12,11 +12,17 @@ router.post('/login', async (req: Request, res: Response, next: NextFunction) =>
   
   const usuario = await Usuario.findOne({where: {login}, include: {model: Pessoa}});
 
-  if(!usuario) res.status(404).send('Usuário ou senha inválidos');
+  if(!usuario) {
+    res.status(404).send('Usuário ou senha inválidos')
+    return;
+  };
   
   const senhaValida = usuario?.senha == senha;
 
-  if(!senhaValida) res.status(401).send({auth: false, token: null})
+  if(!senhaValida) {
+    res.status(401).send({auth: false, token: null})
+    return;
+  }
   
   const token = jwt.sign({id: usuario?.id}, '47126117', {
     expiresIn: 86400
