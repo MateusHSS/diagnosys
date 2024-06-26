@@ -13,6 +13,10 @@ export async function buscarMedico(id: number | string): Promise<Medico | null> 
   return await Medico.findByPk(id, {include: {model: Pessoa}});
 }
 
+export async function buscarMedicoPorIdPessoa(id: number | string): Promise<Medico | null> {
+  return await Medico.findOne({include: {model: Pessoa, where: {id}}});
+}
+
 export async function deletarMedico(medico: Medico): Promise<void> {
   return await medico.destroy();
 }

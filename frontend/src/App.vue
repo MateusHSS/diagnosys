@@ -22,7 +22,6 @@
 <style scoped>
 .btn-light {
   display: block;
-  margin-left: auto;
   margin-right: auto;
   width: 50%;
   text-decoration: none;
@@ -34,7 +33,6 @@
 
 <script>
 import { mapGetters, mapState } from 'vuex';
-
 export default {
   data() {
     return {}

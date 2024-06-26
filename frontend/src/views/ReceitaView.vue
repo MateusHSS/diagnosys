@@ -33,6 +33,7 @@ export default {
   },
   methods: {},
   mounted() {
+
     this.$http.get(`/usuario/${this.user.id}/receita`).then(res => {
       const dados = res.data;
 

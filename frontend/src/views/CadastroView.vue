@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
     <b-container>
       <b-card style="height: 80vh">
         <b-row>
@@ -97,6 +97,7 @@
 
 <script>
 import TextInput from "@/components/formularios/TextInput.vue";
+import axios from 'axios';
 
 export default {
   components: {
@@ -116,9 +117,30 @@ export default {
       confirmaSenha: ""
     };
   },
+  computed: {
+    dadosPreenchidos() {
+      return (
+        this.nome !== "" &&
+        this.sobrenome !== "" &&
+        this.cpf !== "" &&
+        this.genero !== ""
+      );
+    },
+    dadosPreenchidos2() {
+      return (
+        this.email !== "" &&
+        this.senha !== "" &&
+        this.confirmarSenha !== ""
+      );
+    },
+  },
   methods: {
     prosseguir() {
-      this.etapa = 2;
+      if (this.dadosPreenchidos) {
+        this.etapa = 2;
+      } else {
+        alert("Preencha todos os campos obrigatórios.");
+      }
     },
     retornar() {
       this.etapa = 1;
@@ -137,6 +159,28 @@ export default {
       // this.$http.post('/register', {nome: this.nome, cpf: this.cpf, email: this.email, senha: this.senha, rg: this.rg, telefone: this.telefone, login: this.login}).then(res => {
       //   console.log('res', res);
       // })
+    },
+    async cadastrarUsuario() {
+      try {
+        const response = await axios.post('http://localhost:3000/usuario', {
+          nome: this.nome,
+          sobrenome: this.sobrenome,
+          cpf: this.cpf,
+          genero: this.genero,
+          login: this.email,
+          email: this.email,
+          senha: this.senha,
+          idPessoa: Math.floor(Math.random() * 1000000) + 1
+        });
+
+        console.log('Cadastro realizado com sucesso:', response.data);
+        this.$router.push({
+        path: "/login",
+      });
+      } catch (error) {
+        console.error('Erro ao cadastrar usuário:', error);
+      }
+      
     },
   },
 };

@@ -1,7 +1,7 @@
-import {deletarMedico, criarMedico, listarMedicos, buscarMedico, buscarMedicoPorNome} from "dao/medicoDAO";
+import {deletarMedico, criarMedico, listarMedicos, buscarMedico, buscarMedicoPorNome, buscarMedicoPorIdPessoa} from "dao/medicoDAO";
 import {listarReceitasMedico, criarReceita} from "dao/receitaDAO";
-import {listarConsultasMedico, criarConsulta} from "dao/consultaDAO";
-import {criarPessoa} from "dao/pessoaDAO";
+import {listarConsultasMedico, criarConsulta, listarConsultasGeral} from "dao/consultaDAO";
+import {buscarPessoa, criarPessoa} from "dao/pessoaDAO";
 import {buscarUsuario} from "dao/usuarioDAO";
 import {NextFunction, Request, Response} from "express";
 
@@ -167,6 +167,26 @@ export async function criaReceita(
   }
 }
 
+export async function listaConsultasGeral(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> {
+  try {
+    const registro = await listarConsultasGeral();
+
+    if (registro.length > 0) {
+      res.status(200).json(registro);
+    } else {
+      res.status(404).send('Nenhuma consulta encontrada para o usuário fornecido');
+    }
+  } catch (error) {
+    console.error('Erro ao listar as consultas:', error);
+    res.status(500).send('Erro ao listar as consultas');
+    next(error);
+  }
+}
+
 export async function listaConsultas(
   req: Request,
   res: Response,
@@ -196,8 +216,25 @@ export async function criaConsulta(
 ): Promise<void> {
   try {
     const dados = req.body;
+
+    const [dia, mes, ano] = dados.data.split('/');
+    const dataObject = new Date(`${ano}-${mes}-${dia}`);
+
+    dados.data = dataObject;
+
+    const usuarioMedico = await buscarUsuario(dados.idMedico);
+
+    console.log('usuario medico', usuarioMedico);
+
+    console.log('idPEssoa', usuarioMedico?.idPessoa);
+
+    if(!usuarioMedico){
+      res.status(404).json({mensagem: 'Não há usuário registrado com esse id de médico'})
+    }
     
-    const medico = await buscarMedico(dados.idMedico);
+    const medico = await buscarMedicoPorIdPessoa(usuarioMedico?.idPessoa || '');
+
+    console.log('medico', medico);
 
     if(!medico){
       res.status(404).json({mensagem: 'Não há médico registrado com esse id'})

@@ -4,6 +4,7 @@ import pessoaController from "@controllers/pessoaController";
 import usuarioController from "@controllers/usuarioController";
 import medicoController from "@controllers/medicoController";
 import authController from "@controllers/authController";
+import consultaController from "@controllers/consultaController";
 import db from "@config/db";
 import bodyParser from "body-parser";
 const cors = require('cors');
@@ -28,6 +29,7 @@ app.use(authController);
 app.use(pessoaController);
 app.use(usuarioController);
 app.use(medicoController);
+app.use(consultaController);
 
 app.listen(port, () => {
   console.log(`Servidor backend rodando na porta ${port}`);

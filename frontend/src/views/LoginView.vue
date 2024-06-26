@@ -1,5 +1,5 @@
 <template>
-  <div>
+   <div class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
     <b-container>
       <b-card style="height: 80vh">
         <b-row>
@@ -38,24 +38,14 @@
                 <b-form-row>
                   <b-row class="w-100 mb-3">
                     <b-col cols="12">
-                      <b-button
-                        id="botaoEntrar"
-                        class="px-3 w-100"
-                        variant="info"
-                        @click="entrar"
-                      >
+                      <b-button id="botaoEntrar" class="px-3 w-100" variant="info" @click="entrar">
                         Entrar
                       </b-button>
                     </b-col>
                   </b-row>
                   <b-row class="w-100 mb-3">
                     <b-col cols="12">
-                      <b-button
-                        id="botaoCadastrar"
-                        class="px-3 w-100"
-                        variant="outline-secondary"
-                        @click="cadastrar"
-                      >
+                      <b-button id="botaoCadastrar" class="px-3 w-100" variant="outline-secondary" @click="cadastrar">
                         Cadastrar
                       </b-button>
                     </b-col>
@@ -72,6 +62,7 @@
 
 <script>
 import TextInput from "@/components/formularios/TextInput.vue";
+
 
 export default {
   components: {

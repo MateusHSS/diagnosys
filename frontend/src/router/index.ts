@@ -3,12 +3,13 @@ import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 import store from '@/config/store.js';
+import axios from "axios";
 
 Vue.use(VueRouter);
 
 const router = new VueRouter({
   mode: "history",
-  base: import.meta.env.BASE_URL,
+  base: "/",
   routes: [
     {
       path: "/",
@@ -21,17 +22,11 @@ const router = new VueRouter({
     {
       path: "/login",
       name: "login",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import("@/views/LoginView.vue"),
+      component: LoginView,
     },
     {
       path: "/cadastro",
       name: "cadastro",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import("@/views/CadastroView.vue"),
     },
     {
@@ -56,7 +51,18 @@ const router = new VueRouter({
     {
       path: '/receita',
       name: 'receita',
-      component: () => import("@/views/ReceitaView.vue")
+      component: () => import("@/views/ReceitaView.vue"),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/novaConsulta',
+      name: 'novaConsulta',
+      component: () => import("@/views/NovaConsultaView.vue"),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/gerenciarUsuarios',
@@ -71,11 +77,21 @@ const router = new VueRouter({
   ],
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   if(to.matched.some(record => record.meta.requiresAuth)) {
     if(store.getters.isLoggedIn) {
+      console.log('dele')
+      console.log(store.getters.user.nome)
+      if(!store.getters.user.id || !store.getters.user.nome) {
+        await axios.post(`http://localhost:${import.meta.env.VITE_PORT}/getUser`, {}, {headers: {Authorization: localStorage.getItem('token')}}).then(res => {
+          console.log('res get user', res);
+          store.state.user = res.data;
+        })
+      }
       next();
       return;
+    } else {
+      console.log('dale');
     }
     next('/login')
   } else {

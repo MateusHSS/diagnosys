@@ -6,6 +6,10 @@ export async function criarConsulta(registro: ConsultaAtributos): Promise<Consul
   return await Consulta.create(registro);
 }
 
+export async function listarConsultasGeral(): Promise<Consulta[]> {
+  return await Consulta.findAll({include: { all: true, nested: true } });
+}
+
 export async function listarConsultas(id: number | string): Promise<Consulta[]> {
   return await Consulta.findAll({where: {idPessoa: id}, include: { all: true, nested: true } });
 }

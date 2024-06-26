@@ -32,6 +32,8 @@
   </div>
 </template>
 
+
+
 <script>
 import Tabela from '@/components/tabela/Tabela.vue';
 import TextInput from '@/components/formularios/TextInput.vue';
