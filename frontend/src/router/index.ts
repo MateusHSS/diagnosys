@@ -68,6 +68,11 @@ const router = new VueRouter({
       path: '/gerenciarUsuarios',
       name: 'gerenciarUsuarios',
       component: () => import("@/views/GerenciarUsuarios.vue")
+    },
+    {
+      path: '/editarUsuario',
+      name: 'editarUsuario',
+      component: () => import("@/views/editarUsuario.vue")
     }
   ],
 });
