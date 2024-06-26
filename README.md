@@ -1,4 +1,4 @@
-# diagnosys
+![Captura de tela 2024-06-26 091949](https://github.com/MateusHSS/diagnosys/assets/95447056/5c85cf42-e14b-4233-80e6-3962b89e4449)
 
 #### Membros:
 - Mateus Henrique (Fullstack, PO)
@@ -272,3 +272,7 @@ Os adaptadores são implementações concretas das interfaces definidas pelas po
 
 - Adaptadores de Saída: Implementam as interfaces dos repositórios utilizando tecnologias externas, como bancos de dados, como usuarioService.ts.
 
+![Captura de tela 2024-06-26 092019](https://github.com/MateusHSS/diagnosys/assets/95447056/a0aeb9a2-3263-45a8-9a39-22668c29e9f9)
+![Captura de tela 2024-06-26 092100](https://github.com/MateusHSS/diagnosys/assets/95447056/9b1c90a1-12db-4edc-abf8-fa9d754a03fc)
+![Captura de tela 2024-06-26 092114](https://github.com/MateusHSS/diagnosys/assets/95447056/2cf21093-42e7-46c2-bd1a-dcd9bdb5b640)
+![Captura de tela 2024-06-26 092356](https://github.com/MateusHSS/diagnosys/assets/95447056/d61a1053-abaa-40cd-8cad-f4cdd20f112d)
