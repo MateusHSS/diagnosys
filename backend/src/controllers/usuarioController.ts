@@ -7,7 +7,7 @@ const router = Router();
 router.post("/usuario", criaUsuario);
 router.get("/usuario", listaUsuarios);
 router.get("/usuario/:id", buscaUsuario);
-router.put("/usuario/:id", atualizaUsuario)
+router.put("/usuario/:id", atualizaUsuario);
 router.delete("/usuario/:id", deletaUsuario);
 router.get("/usuario/:id/receita", listaReceitas);
 router.get("/usuario/:id/consulta", listaConsultas);
