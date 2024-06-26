@@ -225,9 +225,9 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
 
     1. Criar tela de usuários no figma [Hideki]
     2. Criar tela de usuários no frontend [Hideki]
-    3. Implementar funcionalidade de ver todos os usuários no frontend [Iago]
-    4. Implementar funcionalidade de listar os usuários no backend [Iago]
-    5. Implementar funcionalidade de deletar um usuário no backend [Iago]
+    3. Implementar funcionalidade de ver todos os usuários no frontend [Filipe]
+    4. Implementar funcionalidade de listar os usuários no backend [Filipe]
+    5. Implementar funcionalidade de deletar um usuário no backend [Filipe]
  
 - História #10: Como administrador, eu gostaria de editar um usuário.
     
@@ -235,9 +235,9 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
 
     1. Criar tela de usuários no figma [Hideki]
     2. Criar tela de usuários no frontend [Hideki]
-    3. Implementar funcionalidade de ver todos os usuários no frontend [Iago]
-    4. Implementar funcionalidade de listar os usuários no backend [Iago]
-    5. Implementar funcionalidade de editar um usuário no backend [Iago]
+    3. Implementar funcionalidade de ver todos os usuários no frontend [Filipe]
+    4. Implementar funcionalidade de listar os usuários no backend [Filipe]
+    5. Implementar funcionalidade de editar um usuário no backend [Filipe]
 
 (Repartimos a antiga história 6 nas histórias 11 e 12, visto que separamos o que é uma consulta e uma receita e cada uma agora tinha uma página específica. Além disso, a antiga história 7 passou a integrar essas novas histórias, pois é possível ver os dados do paciente nesse momento)
 
