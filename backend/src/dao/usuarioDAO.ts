@@ -9,6 +9,7 @@ export async function criarUsuario(dados: UsuarioAtributos): Promise<Usuario> {
   return await Usuario.create(dados);
 }
 
+
 export async function buscarUsuario(id: number | string): Promise<Usuario | null> {
   return await Usuario.findByPk(id, {include: [{model: Pessoa}]});
 }

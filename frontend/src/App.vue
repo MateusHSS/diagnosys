@@ -21,7 +21,6 @@
 <style scoped>
 .btn-light {
   display: block;
-  margin-left: auto;
   margin-right: auto;
   width: 50%;
   text-decoration: none;
@@ -33,12 +32,10 @@
 
 <script>
 import { mapGetters, mapState } from 'vuex';
-
-export default {
+<<<<<<< HEAD
   data() {
     return {}
   },
-  methods: {
     perfil() {
       this.$router.push({
         path: '/perfil'
@@ -61,4 +58,8 @@ export default {
     ...mapGetters(["isLoggedIn"])
   }
 }
+</script>
+=======
+  name: "App",
+};
 </script>

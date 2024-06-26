@@ -1,10 +1,19 @@
 <template>
   <b-row class="w-100">
     <b-col cols="12" md="12">
-      <b-form-input type="text" v-model="text" :id="id" :name="name" :maxlength="length"
-        :placeholder="placeholder ? placeholder : ''" :readonly="readonly" :lazy="lazy || false" :state="valid"
-        :formatter="formatter">
-      </b-form-input>
+      <b-form-input
+        :type="inputType"
+        v-model="text"
+        :id="id"
+        :name="name"
+        :maxlength="length"
+        :placeholder="placeholder ? placeholder : ''"
+        :readonly="readonly"
+        :lazy="lazy || false"
+        :state="valid"
+        :formatter="formatter"
+        :autocomplete="autocomplete"
+      ></b-form-input>
       <b-form-invalid-feedback :id="id" v-if="!valid">
         {{ invalidText }}
       </b-form-invalid-feedback>
@@ -23,6 +32,8 @@ export default {
   data() {
     return {
       text: "",
+      inputType: "text", // Default to text input
+      autocomplete: "on", // Default to enable autocomplete
     };
   },
   watch: {
@@ -32,10 +43,11 @@ export default {
     value() {
       this.text = this.value;
     },
-  },
-  methods: {
-    changeState() {
-      return true;
+    passwordInput(newValue) {
+      // Update input type based on passwordInput prop change
+      this.inputType = newValue ? "password" : "text";
+      // Update autocomplete attribute to 'off' for password input
+      this.autocomplete = newValue ? "off" : "on";
     },
   },
   updated() {
@@ -43,6 +55,10 @@ export default {
   },
   created() {
     this.text = this.value;
+    // Determine initial input type based on props
+    this.inputType = this.passwordInput ? "password" : "text";
+    // Set initial autocomplete attribute
+    this.autocomplete = this.passwordInput ? "off" : "on";
   },
   props: {
     id: {
@@ -87,6 +103,10 @@ export default {
     formatter: {
       type: Function,
       default: (val) => val,
+    },
+    passwordInput: {
+      type: Boolean,
+      default: false,
     },
   },
 };

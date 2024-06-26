@@ -8,7 +8,7 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
   mode: "history",
-  base: import.meta.env.BASE_URL,
+  base: "/",
   routes: [
     {
       path: "/",
@@ -21,18 +21,12 @@ const router = new VueRouter({
     {
       path: "/login",
       name: "login",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import("@/views/LoginView.vue"),
+      component: LoginView,
     },
     {
       path: "/cadastro",
       name: "cadastro",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import("@/views/CadastroView.vue"),
+      component: CadastroView,
     },
     {
       path: "/perfil",

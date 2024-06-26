@@ -32,15 +32,18 @@
   </div>
 </template>
 
+
+
 <script>
 import Tabela from '@/components/tabela/Tabela.vue';
 import TextInput from '@/components/formularios/TextInput.vue';
 import {BIconPencilSquare} from "bootstrap-vue";
+import MainMenu from '@/components/MainMenu.vue'
 
 export default {
   name: 'HomeView',
   components: {
-    Tabela, TextInput, BIconPencilSquare
+    Tabela, TextInput, BIconPencilSquare, MainMenu
   },
   data() {
     return {
