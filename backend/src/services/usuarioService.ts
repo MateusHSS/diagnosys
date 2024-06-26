@@ -5,6 +5,7 @@ import {NextFunction, Request, Response} from "express";
 import Usuario from "models/usuario";
 import {criarPessoa, atualizarPessoa} from "dao/pessoaDAO";
 import Pessoa from "models/pessoa";
+import {criarMedico} from "dao/medicoDAO";
 
 export async function listaUsuarios(
   req: Request,
@@ -66,6 +67,12 @@ export async function criaUsuario(
     usuario.idPessoa = pessoa.id;
 
     await usuario.save();
+
+    if(usuario.tipo == 'M') {
+      const medico = await criarMedico(dados);
+      medico.idPessoa = pessoa.id;
+      await medico.save();
+    }
 
     res.status(201).json(usuario);
 
