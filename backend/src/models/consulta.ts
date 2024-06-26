@@ -1,5 +1,7 @@
 import {DataTypes, Model, Sequelize} from "sequelize";
 import sequelize from "@config/db";
+import Pessoa from "./pessoa";
+import Medico from "./medico";
 
 export interface ConsultaAtributos {
   id?: number;
@@ -33,10 +35,18 @@ Consulta.init(
     idMedico: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: 'Medico',
+        key: 'id'
+      }
     },
     idPessoa: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: 'Pessoa',
+        key: 'id'
+      }
       },
     tipo: {
       type: DataTypes.ENUM('consulta', 'retorno'),
@@ -60,5 +70,11 @@ Consulta.init(
     timestamps: true,
   }
 );
+
+Consulta.belongsTo(Pessoa, {foreignKey: 'idPessoa'});
+Pessoa.hasMany(Consulta, {foreignKey: 'idPessoa'});
+
+Consulta.belongsTo(Medico, {foreignKey: 'idMedico'});
+Medico.hasMany(Consulta, {foreignKey: 'idMedico'});
 
 export default Consulta;

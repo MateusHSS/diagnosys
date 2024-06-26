@@ -7,6 +7,7 @@ export interface UsuarioAtributos {
   login: string;
   senha: string;
   idPessoa: number;
+  tipo: 'P'|'M'|'A';
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -16,6 +17,7 @@ class Usuario extends Model<UsuarioAtributos> implements UsuarioAtributos {
   public login!: string;
   public senha!: string;
   public idPessoa!: number;
+  public tipo!: 'P'|'M'|'A';
   public readonly createdAt?: Date;
   public readonly updatedAt?: Date;
 }
@@ -43,6 +45,11 @@ Usuario.init(
         model: 'Pessoa',
         key: 'id'
       }
+    },
+    tipo: {
+      type: DataTypes.ENUM('P', 'M', 'A'),
+      defaultValue: 'P',
+      allowNull: false,
     },
   },
   {

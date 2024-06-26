@@ -1,7 +1,7 @@
 <template>
    <div class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
     <b-container>
-      <b-card style="height: 70vh">
+      <b-card style="height: 80vh">
         <b-row>
           <b-col cols="6">
             <b-row class="justify-content-center mt-3 p-x-3">
@@ -9,10 +9,14 @@
             </b-row>
             <b-row class="mt-3">
               <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque
-                repellendus sit, voluptate eius, commodi magnam at ipsa iusto
-                nemo non beatae fuga quod nesciunt dolore optio harum, molestias
-                blanditiis veniam.
+                Bem-vindo ao Sistema de Gestão de Consultas e Receitas Médicas!
+              </p>
+              <p>
+                Nosso aplicativo foi desenvolvido especialmente para facilitar o
+                agendamento e gerenciamento de consultas médicas, tanto para
+                pacientes quanto para médicos. Com uma interface intuitiva e
+                recursos avançados, oferecemos uma solução completa para atender
+                às suas necessidades de saúde.
               </p>
             </b-row>
             <b-row class="bg-alert">
@@ -26,10 +30,10 @@
             <b-row class="justify-content-center mt-3">
               <b-form class="w-75">
                 <b-form-row class="mb-3">
-                  <TextInput id="email" name="email" placeholder="Email" v-model="email"/>
+                  <TextInput id="login" name="login" placeholder="Login" v-model="login" />
                 </b-form-row>
                 <b-form-row class="mb-3">
-                  <TextInput id="senha" name="senha" placeholder="Senha" v-model="senha" :passwordInput="true"/>
+                  <TextInput id="senha" name="senha" placeholder="Senha" v-model="senha" />
                 </b-form-row>
                 <b-form-row>
                   <b-row class="w-100 mb-3">
@@ -58,8 +62,6 @@
 
 <script>
 import TextInput from "@/components/formularios/TextInput.vue";
-import axios from 'axios';
-import Cookies from 'js-cookie'; 
 
 
 export default {
@@ -68,52 +70,32 @@ export default {
   },
   data() {
     return {
-      etapa: 1,
-      email:"",
-      senha:""
+      login: '',
+      senha: ''
     };
   },
   methods: {
-    cadastrar() {
+    entrar() {
+      this.$store
+        .dispatch("login", { login: this.login, senha: this.senha })
+        .then(() => {
+          this.$router.push({path: "/"})
+        })
+        .catch(err => console.log(err));
+    },
+    cadastrar(){
       this.$router.push({
-        path: "/cadastro",
-      });
-    },
-    async entrar() {
-      try{
-        const response = await axios.post('http://localhost:3000/logar', {
-          email: this.email,
-          senha: this.senha,
-        });
-        if(response.status >= 200){
-          const { email, nome } = response.data;
-          Cookies.set("session", email, {
-            path: '/',
-          });
-
-          Cookies.set("authenticated", true, {
-            path: '/',
-          });
-
-          Cookies.set("nome", nome, {
-            path: '/', 
-          });
-
-          this.$router.push({
-           path: "/",
-          });
-        }
-        
-      } catch(error){
-        console.error('Erro ao logar:', error);
-      }
-    },
+        path: '/cadastro'
+      })
+    }
   },
 };
 </script>
 
 <style scoped>
-#botaoConfirmar {
-  border-radius: 50px;
+
+#botaoEntrar,
+#botaoCadastrar{
+  border-radius: 25px;
 }
 </style>

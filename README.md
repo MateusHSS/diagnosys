@@ -1,4 +1,4 @@
-# diagnosys
+![Captura de tela 2024-06-26 091949](https://github.com/MateusHSS/diagnosys/assets/95447056/5c85cf42-e14b-4233-80e6-3962b89e4449)
 
 #### Membros:
 - Mateus Henrique (Fullstack, PO)
@@ -137,4 +137,142 @@ Além disso, o sistema busca facilitar a realização de exames e compra de medi
     3. Implementar funcionalidade de ver todos os usuários no frontend [Iago]
     4. Implementar funcionalidade de listar os usuários no backend [Iago]
     5. Implementar funcionalidade de deletar um usuário no backend [Iago]
+
+### Backlog da Sprint - REVISADO
+
+- História Revisada #1: Como usuário, eu gostaria de ver uma página principal com os médicos disponíveis.
     
+    **Tarefas e responsáveis**:
+    
+    1. Criar setup [Mateus]
+    2. Criar entidades principais do projeto [Mateus]
+    3. Configurar banco de dados MySQL [Mateus]
+    4. Criar design de tela inicial no figma [Hideki]
+    5. Criar tela inicial no frontend [Filipe]
+    6. Implementar funcionalidade de ver os médicos disponíveis na tela inicial no frontend [Filipe]
+    7. Implementar funcionalidade de listar médicos no backend [Filipe]
+
+ (A antiga história 2, foi dividida entre as histórias 2, 3 e 4, visto que percebemos que o usuário precisava conseguir entrar no sistema e não poder excluir sua conta e sim alterar seus dados)
+ 
+- História Revisada #2: Como usuário, eu gostaria de me cadastrar no sistema.
+
+    **Tarefas e responsáveis**:
+    
+    1. Criar tela de cadastro no figma [Hideki]
+    2. Criar tela de cadastro no frontend [Mateus]
+    3. Implementar funcionalidade de criar usuário no backend [Filipe]
+    4. Implementar funcionalidade de ler usuário no backend [Filipe]
+
+- História Adicionada #3: Como usuário, eu gostaria gerenciar meu cadastro no sistema.
+
+    **Tarefas e responsáveis**:
+    
+    1. Criar tela de perfil no frontend [Mateus]
+    2. Implementar funcionalidade de listar os dados do usuário no backend [Filipe]
+    3. Implementar funcionalidade de alterar os dados usuário no backend [Filipe]
+    4. Implementar uma verificação para os dados alterados [Mateus]
+
+- História Adicionada #4: Como usuário, eu gostaria de entrar no sistema.
+
+    **Tarefas e responsáveis**:
+    
+    1. Criar tela de login no figma [Hideki]
+    2. Criar tela de login no frontend [Mateus]
+    3. Implementar funcionalidade de autenticação no backend [Mateus]
+    4. Implementar funcionalidade de sessão no frontend [Mateus]
+    5. Implementar funcionalidade de logout no frontend [Filipe]
+    6. Implementar funcionalidade de logout no backend [Mateus]
+
+- História Revisada #5: Como usuário, eu gostaria de pesquisar um médico.
+    
+    **Tarefas e responsáveis**:
+    
+    1. Implementar funcionalidade de pesquisar médicos no frontend [Filipe]
+    2. Implementar funcionalidade de listar médicos coerentes com a pesquisa no backend [Mateus]
+
+(A antiga história 4, foi dividida entre as histórias 6 e 7, visto que separamos receitas e consultas como duas coisas diferentes, já que fazia mais sentido para o nosso sistema)
+
+- História Adicionada #6: Como usuário, eu gostaria de consultar as minhas receitas cadastradas.
+    
+    **Tarefas e responsáveis**:
+    
+    1. Criar tela de receitas no figma [Hideki]
+    2. Criar tela de receitas no frontend [Mateus]
+    3. Implementar funcionalidade de ver as receitas cadastradas na tela de receitas no frontend [Filipe]
+    4. Implementar funcionalidade de listar as receitas cadastradas no backend [Filipe]
+
+- História Adicionada #7: Como usuário, eu gostaria de consultar as minhas consultas cadastradas.
+    
+    **Tarefas e responsáveis**:
+    
+    1. Criar tela de consultas no figma [Hideki]
+    2. Criar tela de consultas no frontend [Mateus]
+    3. Implementar funcionalidade de ver as consultas cadastradas na tela de consultas no frontend [Filipe]
+    4. Implementar funcionalidade de listar as consultas cadastradas no backend [Filipe]
+
+- História Revisada #8: Como médico, eu gostaria de cadastrar consultas para os meus pacientes.
+    
+    **Tarefas e responsáveis**:
+    
+    1. Criar tela de cadastro de consulta no figma [Hideki]
+    2. Criar tela de cadastro de consulta no frontend [Mateus]
+    3. Implementar funcionalidade de cadastrar consulta no backend [Filipe]
+    4. Implementar funcionalidade de ver consulta cadastrada no backend [Filipe]
+
+(Repartimos a antiga história 6 nas histórias 9 e 10, visto que separamos o que é uma consulta e uma receita e cada uma agora tinha uma página específica. Além disso, a antiga história 7 passou a integrar essas novas histórias, pois é possível ver os dados do paciente nesse momento)
+
+- História Adicionada #9: Como médico, eu gostaria de visualizar as consultas cadastradas para os meus pacientes.
+    
+    **Tarefas e responsáveis**:
+
+    1. Criar tela de consultas do médico no frontend [Mateus]
+    2. Implementar funcionalidade de ver as consultas cadastradas na tela de registros do usuário no frontend [Mateus]
+    3. Implementar funcionalidade de listar as consultas cadastradas do usuário no backend [Filipe]
+ 
+- História Adicionada #10: Como médico, eu gostaria de visualizar as receitas cadastradas para os meus pacientes.
+    
+    **Tarefas e responsáveis**:
+
+    1. Criar tela de receitas do médico no frontend [Mateus]
+    2. Implementar funcionalidade de ver as receitas cadastradas na tela de registros do usuário no frontend [Mateus]
+    3. Implementar funcionalidade de listar as receitas cadastradas do usuário no backend [Filipe]
+
+ (Por fim, removemos a história 8, visto que não se encaixava nesse momento da sprint desenvolver um administrador. Além disso, com as novas histórias, o trabalho demandou mais tempo do que esperado o que dificultou na execução dessa parte)
+
+### Arquitetura Hexagonal
+
+A arquitetura hexagonal visa isolar o núcleo do sistema (a lógica de negócios) das dependências externas, facilitando a manutenção, os testes e a escalabilidade. Nessa linha de pensamento, faz sentido usar essa arquitetura para desenvolver o sistema, visto que, em primeiro lugar, a implementação do sistema fica mais fácil e, em segundo lugar, vamos precisar realizar uma bateria grande de testes, o que é facilitado utilizando esse tipo de arquitetura.
+
+### Por que o sistema está adotando essa arquitetura?
+O Diagnosys adota a arquitetura hexagonal pelos seguintes motivos:
+
+- Manutenção: A separação clara entre o núcleo do sistema e suas dependências externas facilita a manutenção. Mudanças nas interfaces de usuário ou nas tecnologias de armazenamento não afetam a lógica de negócios.
+ 
+- Testes: A arquitetura permite testar o núcleo do sistema de maneira isolada, utilizando mocks para as dependências externas. Isso facilita a criação de testes unitários e de integração.
+
+- Escalabilidade: A arquitetura hexagonal facilita a adição de novas funcionalidades e adaptações a novos requisitos sem a necessidade de reescrever grandes partes do sistema.
+
+- Flexibilidade: A substituição ou atualização das dependências externas pode ser feita com mínimo impacto no núcleo do sistema.
+
+### Domínio e Adaptadores
+
+#### Portas
+
+As portas são interfaces que definem como os adaptadores externos podem interagir com o núcleo do sistema. No Diagnosys, temos:
+
+Repositórios: Interfaces que definem as operações de armazenamento e recuperação de dados, nesse caso usamos o sequelize como porta.
+
+Serviços de Aplicação: Interfaces que expõem funcionalidades do núcleo para os adaptadores externos, como os controladores da web.
+
+#### Adaptadores
+
+Os adaptadores são implementações concretas das interfaces definidas pelas portas. Eles permitem a comunicação com sistemas externos e são divididos em dois tipos:
+
+- Adaptadores de Entrada: Incluem os controladores da web que recebem as solicitações dos usuários e chamam os serviços de aplicação apropriados, como usuarioCOntroller.ts.
+
+- Adaptadores de Saída: Implementam as interfaces dos repositórios utilizando tecnologias externas, como bancos de dados, como usuarioService.ts.
+
+![Captura de tela 2024-06-26 092019](https://github.com/MateusHSS/diagnosys/assets/95447056/a0aeb9a2-3263-45a8-9a39-22668c29e9f9)
+![Captura de tela 2024-06-26 092100](https://github.com/MateusHSS/diagnosys/assets/95447056/9b1c90a1-12db-4edc-abf8-fa9d754a03fc)
+![Captura de tela 2024-06-26 092114](https://github.com/MateusHSS/diagnosys/assets/95447056/2cf21093-42e7-46c2-bd1a-dcd9bdb5b640)
+![Captura de tela 2024-06-26 092356](https://github.com/MateusHSS/diagnosys/assets/95447056/d61a1053-abaa-40cd-8cad-f4cdd20f112d)
