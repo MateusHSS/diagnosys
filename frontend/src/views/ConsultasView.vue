@@ -6,13 +6,13 @@
           <b-row class="d-flex justify-content-center">
             <h1>Consultas</h1>
           </b-row>
-          <b-row v-if="user.tipo === 'M'" class="d-flex justify-content-center">
-            <b-button variant="info" @click="novaConsulta">Nova consulta</b-button>
-          </b-row>
           <b-row>
           </b-row>
           <b-row class="h-100 mh-100">
-            <Tabela :colunas="colunas" :dados="registros" ordenacaoCampo="id" :totalRegistros="registros.length" />
+            <Tabela v-if="user.tipo == 'M'" :colunas="colunas" :dados="registros" ordenacaoCampo="id"
+              :totalRegistros="registros.length" :novaConsulta="novaConsulta" :visualizarReceitas="visualizarReceitas" />
+            <Tabela v-else :colunas="colunas" :dados="registros" ordenacaoCampo="id"
+              :totalRegistros="registros.length" />
           </b-row>
         </b-container>
       </b-card>
@@ -32,21 +32,41 @@ export default {
         {key: 'data', label: 'Data', formatter: val => new Date(val).toLocaleDateString('pt-br')},
         {key: "Medico.Pessoa.nome", label: "Médico"},
         {key: 'descricao', label: "Descrição"},
-        {key: 'tipo', label: "Tipo"}
+        { key: 'tipo', label: "Tipo", formatter: val => val.charAt(0).toUpperCase() + val.slice(1) },
+        {key: 'icons', label: ''}
       ],
       registros: [],
-
     }
   },
   methods: {
-    novaConsulta() {
-      console.log('Não implementado')
+    novaConsulta(item) {
+      this.$router.push({
+        path: '/novaConsulta',
+        query: {
+          paciente: item.id
+        }
+      });
+    },
+    visualizarReceitas(item) {
+      this.$router.push({
+        path: '/receitas',
+        query: {
+          paciente: item.id
+        }
+      });
     }
   },
   mounted() {
     let url = '';
     if(this.user.tipo == 'M') {
-      url = `/medico/${this.user.id}/consulta`;
+      url = `/pessoa`;
+
+      this.colunas = [
+        {key: 'nome', label: 'Nome'},
+        {key: 'cpf', label: 'CPF'},
+        {key: 'telefone', label: 'Telefone'},
+        {key: 'icons', label: ''}
+      ];
     } else {
       url = `/usuario/${this.user.id}/consulta`;
     }

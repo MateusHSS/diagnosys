@@ -32,10 +32,11 @@
 
 <script>
 import { mapGetters, mapState } from 'vuex';
-<<<<<<< HEAD
+export default {
   data() {
     return {}
   },
+  methods: {
     perfil() {
       this.$router.push({
         path: '/perfil'
@@ -58,8 +59,4 @@ import { mapGetters, mapState } from 'vuex';
     ...mapGetters(["isLoggedIn"])
   }
 }
-</script>
-=======
-  name: "App",
-};
 </script>

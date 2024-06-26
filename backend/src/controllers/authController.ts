@@ -5,6 +5,10 @@ import Pessoa from "models/pessoa";
 import { criarPessoa } from "dao/pessoaDAO";
 import { criarUsuario } from "dao/usuarioDAO";
 
+interface JwtPayload {
+  id: string
+}
+
 const router = Router();
 
 router.post('/login', async (req: Request, res: Response, next: NextFunction) => {
@@ -45,6 +49,18 @@ router.post('/register', async (req: Request, res: Response, next: NextFunction)
   });
 
   res.status(200).send({auth: true, token, user: usuario});
+});
+
+router.post('/getUser', async (req: Request, res: Response, next: NextFunction) => {
+  const token = req.headers.authorization || '';
+
+  const dados = jwt.verify(token, '47126117') as JwtPayload;
+
+  if(!dados.id) res.status(401).send('Token inválido');
+  
+  const usuario = await Usuario.findByPk(dados.id, {include: {model: Pessoa}});
+
+  res.status(200).json(usuario);
 })
 
 export default router;

@@ -1,7 +1,5 @@
 <template>
   <b-card class="resultado w-100 mt-3">
-    <!-- <QuantidadePagina v-if="selecionarQuantidade" @selecionou="selecionarQuantidadePagina"
-      :quantidadePorPagina="quantidadePorPagina" v-show="exibir" /> -->
     <b-table :items="dados" :fields="colunas" :per-page="porPagina" :current-page="paginaAtual"
       @sort-changed="mudarOrdenacao" striped responsive hover v-show="exibir" :no-local-sorting="!emMemoria"
       :sort-by="ordenacaoCampo" :sort-desc="ordenacaoDesc">
@@ -23,26 +21,13 @@
       </template>
       <template #cell(icons)="data">
         <b-row class="d-flex flex-nowrap">
-          <b-button variant="link" type="button" class="text-decoration-none"
-            v-if="exibirBotaoVisualizar && !data.item.desabilitarBotaoVisualizar"
-            :disabled="data.item.desabilitarBotaoVisualizar === true" @click="visualizar(data.item)"
-            v-permissao="permissaoVisualizar">
-            <font-awesome-icon icon="eye" class="text-success" />
+          <b-button variant="link" type="button" class="text-decoration-none" v-if="exibirBotaoNovaConsulta"
+            @click="novaConsulta(data.item)">
+            <b-icon icon="plus-circle" class="text-success" />
           </b-button>
-          <b-button variant="link" type="button" class="text-decoration-none" v-if="exibirBotaoEditar"
-            :disabled="data.item.desabilitarBotaoEditar === true" @click="editar(data.item)"
-            v-permissao="permissaoEditar">
-            <font-awesome-icon icon="pencil-alt" class="text-primary" />
-          </b-button>
-          <b-button variant="link" type="button" class="text-decoration-none" v-if="exibirBotaoExcluir"
-            :disabled="data.item.desabilitarBotaoExcluir === true" @click="excluir(data.item)"
-            v-permissao="permissaoExcluir">
-            <font-awesome-icon icon="trash-alt" class="text-danger" />
-          </b-button>
-          <b-button variant="link" type="button" class="text-decoration-none" v-if="exibirBotaoDownload"
-            :disabled="data.item.desabilitarBotaoDownload === true" @click="download(data.item)"
-            v-permissao="permissaoDownload">
-            <font-awesome-icon icon="download" class="text-secondary" />
+          <b-button variant="link" type="button" class="text-decoration-none" v-if="exibirBotaoVisualizarReceitas"
+            @click="visualizarReceitas(data.item)">
+            <b-icon icon="file-earmark-text" class="text-success" />
           </b-button>
         </b-row>
       </template>
@@ -61,6 +46,7 @@
 import Paginacao from '@/components/tabela/Paginacao.vue';
 import QuantidadePagina from '@/components/tabela/QuantidadePagina.vue';
 import TotalRegistros from '@/components/tabela/TotalRegistros.vue';
+import { BIconPlusCircle, BIconFileEarmarkText } from "bootstrap-vue";
 
 export default {
   name: 'Tabela',
@@ -68,6 +54,8 @@ export default {
     QuantidadePagina,
     Paginacao,
     TotalRegistros,
+    BIconPlusCircle,
+    BIconFileEarmarkText
   },
   props: {
     emMemoria: { type: Boolean, default: false },
@@ -106,6 +94,8 @@ export default {
     inicializaMarcado: { type: Boolean, default: false },
     sempreVisivel: { type: Boolean, default: false },
     selecionado: { type: Object },
+    novaConsulta: {type: Function},
+    visualizarReceitas: {type: Function},
   },
   data() {
     return {
@@ -129,18 +119,12 @@ export default {
     porPagina() {
       return this.emMemoria ? this.quantidadePorPagina : 0;
     },
-    exibirBotaoVisualizar() {
-      return typeof this.visualizar !== 'undefined';
+    exibirBotaoNovaConsulta() {
+      return typeof this.novaConsulta !== 'undefined';
     },
-    exibirBotaoEditar() {
-      return typeof this.editar !== 'undefined';
-    },
-    exibirBotaoExcluir() {
-      return typeof this.excluir !== 'undefined';
-    },
-    exibirBotaoDownload() {
-      return typeof this.download !== 'undefined';
-    },
+    exibirBotaoVisualizarReceitas() {
+      return typeof this.visualizarReceitas !== 'undefined';
+    }
   },
   methods: {
     limparSelecionarTodos() {

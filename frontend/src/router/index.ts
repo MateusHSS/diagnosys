@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 import store from '@/config/store.js';
+import axios from "axios";
 
 Vue.use(VueRouter);
 
@@ -26,7 +27,7 @@ const router = new VueRouter({
     {
       path: "/cadastro",
       name: "cadastro",
-      component: CadastroView,
+      component: () => import("@/views/CadastroView.vue"),
     },
     {
       path: "/perfil",
@@ -50,16 +51,37 @@ const router = new VueRouter({
     {
       path: '/receita',
       name: 'receita',
-      component: () => import("@/views/ReceitaView.vue")
+      component: () => import("@/views/ReceitaView.vue"),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/novaConsulta',
+      name: 'novaConsulta',
+      component: () => import("@/views/NovaConsultaView.vue"),
+      meta: {
+        requiresAuth: true
+      }
     }
   ],
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   if(to.matched.some(record => record.meta.requiresAuth)) {
     if(store.getters.isLoggedIn) {
+      console.log('dele')
+      console.log(store.getters.user.nome)
+      if(!store.getters.user.id || !store.getters.user.nome) {
+        await axios.post(`http://localhost:${import.meta.env.VITE_PORT}/getUser`, {}, {headers: {Authorization: localStorage.getItem('token')}}).then(res => {
+          console.log('res get user', res);
+          store.state.user = res.data;
+        })
+      }
       next();
       return;
+    } else {
+      console.log('dale');
     }
     next('/login')
   } else {
