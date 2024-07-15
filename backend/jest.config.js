@@ -10,4 +10,5 @@ module.exports = {
     '^@models/(.*)$': '<rootDir>/src/models/$1',
     '^@config/(.*)$': '<rootDir>/src/config/$1',
   },
+  collectCoverage: true
 };

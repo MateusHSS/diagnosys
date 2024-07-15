@@ -122,8 +122,7 @@ export default {
       return (
         this.nome !== "" &&
         this.sobrenome !== "" &&
-        this.cpf !== "" &&
-        this.genero !== ""
+        this.cpf !== ""
       );
     },
     dadosPreenchidos2() {

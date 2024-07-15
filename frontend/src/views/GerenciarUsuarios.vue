@@ -6,11 +6,6 @@
           <b-row class="d-flex justify-content-center">
             <h1>Gerenciar Usuários</h1>
           </b-row>
-          <b-row class="d-flex justify-content-center">
-            <b-button variant="info" @click="novaConsulta">Nova consulta</b-button>
-          </b-row>
-          <b-row>
-          </b-row>
           <b-row class="h-100 mh-100">
             <Tabela
               :colunas="colunas"

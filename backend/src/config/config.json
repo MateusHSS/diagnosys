@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "hideki",
-    "password": "123456789",
+    "username": "root",
+    "password": "47126117mat",
     "database": "diagnosys",
     "host": "127.0.0.1",
     "dialect": "mysql",
