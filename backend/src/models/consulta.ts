@@ -23,6 +23,10 @@ class Consulta extends Model<ConsultaAtributos> implements ConsultaAtributos {
   public descricao?: string;
   public readonly createdAt?: Date;
   public readonly updatedAt?: Date;
+
+  public static associate(models: any) {
+    Consulta.belongsTo(models.Pessoa, { foreignKey: 'idPessoa' });
+  }
 }
 
 Consulta.init(
@@ -71,7 +75,6 @@ Consulta.init(
   }
 );
 
-Consulta.belongsTo(Pessoa, {foreignKey: 'idPessoa'});
 Pessoa.hasMany(Consulta, {foreignKey: 'idPessoa'});
 
 Consulta.belongsTo(Medico, {foreignKey: 'idMedico'});

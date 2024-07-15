@@ -1,6 +1,6 @@
-import Consulta, {ConsultaAtributos} from "models/consulta";
-import Medico from "models/medico";
-import Pessoa from "models/pessoa";
+import Consulta, {ConsultaAtributos} from "@models/consulta";
+import Medico from "@models/medico";
+import Pessoa from "@models/pessoa";
 
 export async function criarConsulta(registro: ConsultaAtributos): Promise<Consulta> {
   return await Consulta.create(registro);

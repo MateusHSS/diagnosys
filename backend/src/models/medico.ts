@@ -1,6 +1,6 @@
 import {DataTypes, Model} from "sequelize";
 import sequelize from "@config/db";
-import Pessoa from 'models/pessoa';
+import Pessoa from './pessoa';
 
 export interface MedicoAtributos {
   id?: number;
@@ -16,6 +16,10 @@ class Medico extends Model<MedicoAtributos> implements MedicoAtributos {
   public idPessoa!: number;
   public readonly createdAt?: Date;
   public readonly updatedAt?: Date;
+
+  public static associate(models: any) {
+    Medico.belongsTo(models.Pessoa, { foreignKey: 'idPessoa' });
+  }
 }
 
 Medico.init(
@@ -49,7 +53,6 @@ Medico.init(
   }
 );
 
-Medico.belongsTo(Pessoa, { foreignKey: 'idPessoa' });
-Pessoa.hasOne(Medico, { foreignKey: 'idPessoa' });
+
 
 export default Medico;

@@ -31,7 +31,7 @@
                       <label for="tipoConsulta">Tipo:</label>
                     </b-form-row>
                     <b-form-row>
-                      <b-form-select v-model="registro.tipoConsulta" :options="combos.tipoConsulta.itens" class="mb-3" />
+                      <b-form-select v-model="registro.tipoConsulta" :options="combos.tipoConsulta.itens" class="mb-3"  id="tipoConsulta"/>
                     </b-form-row>
                   </b-col>
                 </b-form-row>
@@ -47,7 +47,7 @@
                   </b-col>
                 </b-form-row>
                 <b-form-row class="d-flex justify-content-center">
-                  <b-button variant="info" @click="registrar">REGISTRAR</b-button>
+                  <b-button variant="info" @click="registrar" id="botaoRegistrar" >REGISTRAR</b-button>
                 </b-form-row>
               </b-form>
             </b-col>
@@ -104,6 +104,8 @@ export default {
 
       this.$http.post(`/medico/consulta`, dados).then(res => {
         console.log('res', res);
+
+        this.$router.push({path: '/consultas'});
       });
     }
   },

@@ -1,5 +1,5 @@
-import Pessoa from "models/pessoa";
-import Usuario, {UsuarioAtributos} from "models/usuario";
+import Pessoa from "@models/pessoa";
+import Usuario, {UsuarioAtributos} from "@models/usuario";
 
 export async function listarUsuarios(): Promise<Usuario[]> {
   return await Usuario.findAll();

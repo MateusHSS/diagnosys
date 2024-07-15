@@ -1,4 +1,4 @@
-import {deletarPessoa, criarPessoa, listarPessoas, buscarPessoa} from "dao/pessoaDAO";
+import {deletarPessoa, criarPessoa, listarPessoas, buscarPessoa} from "@dao/pessoaDAO";
 import {NextFunction, Request, Response} from "express";
 
 export async function listaPessoas(

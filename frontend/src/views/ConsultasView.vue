@@ -8,11 +8,12 @@
           </b-row>
           <b-row>
           </b-row>
-          <b-row class="h-100 mh-100">
-            <Tabela v-if="user.tipo == 'M'" :colunas="colunas" :dados="registros" ordenacaoCampo="id"
-              :totalRegistros="registros.length" :novaConsulta="novaConsulta" :visualizarReceitas="visualizarReceitas" />
-            <Tabela v-else :colunas="colunas" :dados="registros" ordenacaoCampo="id"
-              :totalRegistros="registros.length" />
+          <b-row>
+            <Tabela class="pre-scrollable" style="max-height: 50vh;" v-if="user.tipo == 'M'" :colunas="colunas"
+              :dados="registros" ordenacaoCampo="id" :totalRegistros="registros.length" :novaConsulta="novaConsulta"
+              :visualizarReceitas="visualizarReceitas" />
+            <Tabela v-else class="pre-scrollable" style="max-height: 50vh;" :colunas="colunas" :dados="registros"
+              ordenacaoCampo="id" :totalRegistros="registros.length" />
           </b-row>
         </b-container>
       </b-card>

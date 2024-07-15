@@ -1,5 +1,7 @@
 import {DataTypes, Model} from "sequelize";
 import sequelize from "@config/db";
+import Usuario from "./usuario";
+import Medico from "./medico";
 
 export interface PessoaAtributos {
   id?: number;
@@ -21,6 +23,11 @@ class Pessoa extends Model<PessoaAtributos> implements PessoaAtributos {
   public telefone?: string;
   public readonly createdAt?: Date;
   public readonly updatedAt?: Date;
+
+  public static associate(models: any) {
+    Pessoa.hasOne(models.Usuario, { foreignKey: 'idPessoa' });
+    Pessoa.hasOne(models.Medico, {foreignKey: 'idPessoa'});
+  }
 }
 
 Pessoa.init(
@@ -43,16 +50,16 @@ Pessoa.init(
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-      get() {
-        const rawValue = this.getDataValue("cpf");
+      // get() {
+      //   const rawValue = this.getDataValue("cpf");
 
-        return rawValue
-          ? rawValue.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, "$1.$2.$3-$4")
-          : null;
-      },
-      set(val: String) {
-        this.setDataValue("cpf", val.replace(/\D/g, ""));
-      },
+      //   return rawValue
+      //     ? rawValue.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, "$1.$2.$3-$4")
+      //     : null;
+      // },
+      // set(val: String) {
+      //   this.setDataValue("cpf", val.replace(/\D/g, ""));
+      // },
     },
     rg: {
       type: DataTypes.STRING,
@@ -81,5 +88,11 @@ Pessoa.init(
     timestamps: true,
   }
 );
+
+Pessoa.hasOne(Usuario, {foreignKey: 'idPessoa'});
+Usuario.belongsTo(Pessoa, {foreignKey: 'idPessoa'});
+
+Pessoa.hasOne(Medico, {foreignKey: 'idPessoa'});
+Medico.belongsTo(Pessoa, {foreignKey: 'idPessoa'});
 
 export default Pessoa;

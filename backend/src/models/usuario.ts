@@ -20,6 +20,10 @@ class Usuario extends Model<UsuarioAtributos> implements UsuarioAtributos {
   public tipo!: 'P'|'M'|'A';
   public readonly createdAt?: Date;
   public readonly updatedAt?: Date;
+
+  public static associate(models: any) {
+    Usuario.belongsTo(models.Pessoa, { foreignKey: 'idPessoa' });
+  }
 }
 
 Usuario.init(
@@ -42,7 +46,7 @@ Usuario.init(
       type: DataTypes.INTEGER,
       unique: true,
       references: {
-        model: 'Pessoa',
+        model: Pessoa,
         key: 'id'
       }
     },
@@ -60,9 +64,5 @@ Usuario.init(
     timestamps: true,
   }
 );
-
-Usuario.belongsTo(Pessoa, {foreignKey: 'idPessoa'});
-Pessoa.hasOne(Usuario, {foreignKey: 'idPessoa'});
-
 
 export default Usuario;

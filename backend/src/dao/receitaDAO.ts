@@ -1,4 +1,4 @@
-import Receita, {ReceitaAtributos} from "models/receita";
+import Receita, {ReceitaAtributos} from "@models/receita";
 
 export async function criarReceita(registro: ReceitaAtributos): Promise<Receita> {
   return await Receita.create(registro);
