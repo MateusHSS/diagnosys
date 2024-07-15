@@ -42,6 +42,7 @@ jobs:
       run: |
         cd backend
         npm install
+        npm fund
 
     - name: Run tests
       run: |
