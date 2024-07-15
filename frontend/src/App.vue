@@ -3,19 +3,22 @@
     <b-sidebar id="sidebar-1" title="Sidebar" v-if="isLoggedIn" visible no-close-on-route-change no-header>
       <template #footer>
         <div class="d-flex text-light justify-content-end px-3 py-2">
-          <b-button size="sm" class="outline" variant="danger" @click="logout">Sair<b-icon icon="box-arrow-right"/></b-button>
+          <b-button size="sm" class="outline" variant="danger" @click="logout">Sair<b-icon
+              icon="box-arrow-right" /></b-button>
         </div>
       </template>
       <b-nav vertical class="w-100 mt-5 d-flex justify-content-center">
         <b-navbar-brand :to="{path: '/'}">
           <img src="imgs/logo.png" width="100%" alt="Kitten" thumbnail>
         </b-navbar-brand>
-        <b-nav-item :to="{path: '/perfil'}" class="text-center">
+        <b-nav-item :to="{path: '/perfil'}" class="text-center" id="botaoMeuPerfil">
           <span class="text-secondary">Meu perfil <b-icon icon="pencil-square" variant="secondary" /></span>
         </b-nav-item>
-        <b-nav-item class="btn btn-light mb-3" v-if="user.tipo !== 'A'" :to="{path: '/receita'}">Receitas</b-nav-item>
-        <b-nav-item class="btn btn-light " v-if="user.tipo !== 'A'" :to="{path: '/consultas'}">Consultas</b-nav-item>
-        <b-nav-item class="btn btn-light" v-if="user.tipo === 'A'"
+        <b-nav-item class="btn btn-light mb-3" id="botaoListaReceitas" v-if="user.tipo !== 'A'"
+          :to="{path: '/receita'}">Receitas</b-nav-item>
+        <b-nav-item class="btn btn-light " id="botaoListaConsultas" v-if="user.tipo !== 'A'"
+          :to="{path: '/consultas'}">Consultas</b-nav-item>
+        <b-nav-item class="btn btn-light" id="botaoGerenciarUsuarios" v-if="user.tipo === 'A'"
           :to="{ path: '/gerenciarUsuarios' }">Usuários</b-nav-item>
         <!-- <b-nav-item class="btn btn-light" v-if="user.tipo === 'M'" :to="{ path: '/' }">Consultas</b-nav-item> -->
 

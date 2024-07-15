@@ -53,6 +53,6 @@ Medico.init(
   }
 );
 
-Pessoa.hasOne(Medico, { foreignKey: 'idPessoa' });
+
 
 export default Medico;

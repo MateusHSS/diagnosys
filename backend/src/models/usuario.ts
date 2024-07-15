@@ -65,6 +65,4 @@ Usuario.init(
   }
 );
 
-Pessoa.hasOne(Usuario, {foreignKey: 'idPessoa'});
-
 export default Usuario;

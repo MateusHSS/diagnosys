@@ -10,7 +10,7 @@
                 v-model="pesquisaMedico" />
             </b-col>
             <b-col cols="2">
-              <b-button class="btn" variant='info' @click="pesquisarMedico">PESQUISAR</b-button>
+              <b-button class="btn" variant='info' @click="pesquisarMedico" id="botaoPesquisarMedico">PESQUISAR</b-button>
             </b-col>
           </b-row>
           <b-row class="h-100 mh-100 mt-4">

@@ -79,7 +79,7 @@
                     </b-col>
                     <b-col cols="6">
                       <b-row class="w-100 d-flex justify-content-center">
-                        <b-button id="botaoProsseguir" class="px-3" variant="info" @click="cadastrar">
+                        <b-button id="botaoCadastrar" class="px-3" variant="info" @click="cadastrar">
                           Cadastrar
                         </b-button>
                       </b-row>
@@ -151,7 +151,7 @@ export default {
       this.$store
         .dispatch("register", { nome: this.nome, cpf: this.cpf, email: this.email, senha: this.senha, rg: this.rg, telefone: this.telefone, login: this.login })
         .then(() => {
-          this.$router.push("/")
+          this.$router.push("/login")
         })
         .catch(err => console.log(err));
         

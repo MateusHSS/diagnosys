@@ -2,7 +2,7 @@
   <b-card class="resultado w-100 mt-3">
     <!-- <QuantidadePagina v-if="selecionarQuantidade" @selecionou="selecionarQuantidadePagina"
       :quantidadePorPagina="quantidadePorPagina" v-show="exibir" /> -->
-      <b-table :items="dados" :fields="colunas" :per-page="porPagina" :current-page="paginaAtual"
+    <b-table :items="dados" :fields="colunas" :per-page="porPagina" :current-page="paginaAtual"
       @sort-changed="mudarOrdenacao" striped responsive hover v-show="exibir" :no-local-sorting="!emMemoria"
       :sort-by="ordenacaoCampo" :sort-desc="ordenacaoDesc" @row-clicked="handleRowClick">
       <template v-slot:head(selecionadoMassa)="data">
@@ -23,12 +23,12 @@
       </template>
       <template #cell(icons)="data">
         <b-row class="d-flex flex-nowrap">
-          <b-button variant="link" type="button" class="text-decoration-none" v-if="exibirBotaoNovaConsulta"
-            @click="novaConsulta(data.item)">
+          <b-button variant="link" type="button" class="text-decoration-none botaoNovaConsulta"
+            v-if="exibirBotaoNovaConsulta" @click="novaConsulta(data.item)">
             <b-icon icon="plus-circle" class="text-success" />
           </b-button>
-          <b-button variant="link" type="button" class="text-decoration-none" v-if="exibirBotaoVisualizarReceitas"
-            @click="visualizarReceitas(data.item)">
+          <b-button variant="link" type="button" class="text-decoration-none botaoVisualizarReceita"
+            v-if="exibirBotaoVisualizarReceitas" @click="visualizarReceitas(data.item)">
             <b-icon icon="file-earmark-text" class="text-success" />
           </b-button>
         </b-row>
