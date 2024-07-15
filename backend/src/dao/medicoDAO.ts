@@ -1,5 +1,5 @@
-import Medico, {MedicoAtributos} from "models/medico";
-import Pessoa from "models/pessoa";
+import Medico, {MedicoAtributos} from "@models/medico";
+import Pessoa from "@models/pessoa";
 
 export async function listarMedicos(): Promise<Medico[]> {
   return await Medico.findAll({include: [{ model: Pessoa }]});

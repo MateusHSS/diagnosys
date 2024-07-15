@@ -1,8 +1,8 @@
-import {deletarMedico, criarMedico, listarMedicos, buscarMedico, buscarMedicoPorNome, buscarMedicoPorIdPessoa} from "dao/medicoDAO";
-import {listarReceitasMedico, criarReceita} from "dao/receitaDAO";
-import {listarConsultasMedico, criarConsulta, listarConsultasGeral} from "dao/consultaDAO";
-import {buscarPessoa, criarPessoa} from "dao/pessoaDAO";
-import {buscarUsuario} from "dao/usuarioDAO";
+import {deletarMedico, criarMedico, listarMedicos, buscarMedico, buscarMedicoPorNome, buscarMedicoPorIdPessoa} from "@dao/medicoDAO";
+import {listarReceitasMedico, criarReceita} from "@dao/receitaDAO";
+import {listarConsultasMedico, criarConsulta, listarConsultasGeral} from "@dao/consultaDAO";
+import {buscarPessoa, criarPessoa} from "@dao/pessoaDAO";
+import {buscarUsuario} from "@dao/usuarioDAO";
 import {NextFunction, Request, Response} from "express";
 
 export async function listaMedicos(

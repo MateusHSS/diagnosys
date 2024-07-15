@@ -10,9 +10,10 @@
     "baseUrl": "src",
     "paths": {
       "@controllers/*": ["controllers/*"],
-      "@models/*": ["src/models/*"],
+      "@models/*": ["models/*"],
       "@services/*": ["services/*"],
-      "@config/*": ["config/*"]
+      "@config/*": ["config/*"],
+      "@dao/*": ["dao/*"]
     }
   },
   "include": ["src/**/*.ts"],

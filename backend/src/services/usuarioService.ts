@@ -1,12 +1,12 @@
-import {deletarUsuario, criarUsuario, listarUsuarios, buscarUsuario} from "dao/usuarioDAO";
-import {listarReceitas} from "dao/receitaDAO";
-import {listarConsultas} from "dao/consultaDAO";
+import {deletarUsuario, criarUsuario, listarUsuarios, buscarUsuario} from "@dao/usuarioDAO";
+import {listarReceitas} from "@dao/receitaDAO";
+import {listarConsultas} from "@dao/consultaDAO";
 import {NextFunction, Request, Response} from "express";
-import Usuario from "models/usuario";
-import {atualizarPessoa} from "dao/pessoaDAO";
-import Pessoa from "models/pessoa";
-import {criarMedico} from "dao/medicoDAO";
-import { criarPessoa } from "dao/pessoaDAO";
+import Usuario from "@models/usuario";
+import {atualizarPessoa} from "@dao/pessoaDAO";
+import Pessoa from "@models/pessoa";
+import {criarMedico} from "@dao/medicoDAO";
+import { criarPessoa } from "@dao/pessoaDAO";
 import bcrypt from "bcrypt";
 
 export async function listaUsuarios(

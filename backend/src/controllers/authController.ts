@@ -1,9 +1,9 @@
 import {NextFunction, Request, Response, Router} from "express";
-import Usuario from "models/usuario";
+import Usuario from "@models/usuario";
 import jwt from "jsonwebtoken";
-import Pessoa from "models/pessoa";
-import { criarPessoa } from "dao/pessoaDAO";
-import { criarUsuario } from "dao/usuarioDAO";
+import Pessoa from "@models/pessoa";
+import { criarPessoa } from "@dao/pessoaDAO";
+import { criarUsuario } from "@dao/usuarioDAO";
 
 interface JwtPayload {
   id: string
